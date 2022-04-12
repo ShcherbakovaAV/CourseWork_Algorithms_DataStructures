@@ -34,9 +34,9 @@ namespace CourseWork_Algorithms_Data_Structures
             Count++;
         }
 
-        public void Push(string brand, string year)
+        public void Push(string brand, int year)
         {
-            if (brand is null || year is null)
+            if (brand is null || year == 0)
                 throw new ArgumentNullException();
 
             Airplane airplane = new Airplane(brand, year);
