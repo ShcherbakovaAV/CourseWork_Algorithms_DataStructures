@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CourseWork_Algorithms_Data_Structures
 {
-    public class Airport
+    public class Airport : IEnumerable<Airplane>
     {
         public string Name { get; private set; }
 
@@ -71,6 +72,23 @@ namespace CourseWork_Algorithms_Data_Structures
         public void Clear()
         {
             _head = null;
+        }
+
+        public IEnumerator<Airplane> GetEnumerator()
+        {
+            ElementSecondaryStructure _current = _head;
+
+            while (_current != null)
+            {
+                yield return _current.Airplane;
+
+                _current = _current.Next;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }
