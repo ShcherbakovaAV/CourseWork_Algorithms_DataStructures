@@ -23,7 +23,7 @@ namespace CourseWork_Algorithms_Data_Structures
 
         public bool IsEmpty => Count == 0;
 
-        public void Push(Airport airport)
+        public void PushAirport(Airport airport)
         {
             if (airport is null)
                 throw new ArgumentNullException(nameof(airport));
@@ -44,16 +44,36 @@ namespace CourseWork_Algorithms_Data_Structures
             Count++;
         }
 
-        public void Push(string name_airport)
+        public void PushAirport(string name_airport)
         {
             if (name_airport is null)
                 throw new ArgumentNullException(nameof(name_airport));
 
             Airport airport = new Airport(name_airport);
-            Push(airport);
+            PushAirport(airport);
         }
 
-        public Airport Pop()
+        public void PushAirplane(Airplane airplane, string name_airport)
+        {
+            Airport airport = Contains_Airport(name_airport);
+
+            if (airport is null)
+                throw new ArgumentException("Такого аэропорта нет");
+
+            airport.Push(airplane);
+        }
+
+        public void PushAirplane(string brand, int year, string name_airport)
+        {
+            if (brand is null || year == 0)
+                throw new ArgumentNullException();
+
+            Airplane airplane = new Airplane(brand, year);
+
+            PushAirplane(airplane, name_airport);
+        }
+
+        public Airport PopAirport()
         {
             if (IsEmpty)
                 throw new InvalidOperationException();
@@ -71,6 +91,52 @@ namespace CourseWork_Algorithms_Data_Structures
             Count--;
 
             return result;
+        }
+
+        public Airplane PopAirplane(string name_airport)
+        {
+            if (IsEmpty)
+                throw new InvalidOperationException();
+
+            Airport airport = Contains_Airport(name_airport);
+
+            if (airport is null)
+                throw new ArgumentException("Такого аэропорта нет");
+            
+            return airport.Pop();
+
+        }
+
+        public Airport Contains_Airport(string name_airport)
+        {
+            ElementMainStructure _current = _head;
+
+            while (_current != null)
+            {
+                if (_current.Airport.Name == name_airport)
+                    return _current.Airport;
+
+                _current = _current.Next;
+            }
+
+            return null;
+        }
+
+        public Airplane Contains_Airplane(string brand, int year)
+        {
+            ElementMainStructure _current = _head;
+
+            while (_current != null)
+            {
+                Airplane airplane = _current.Airport.Contains_Airplane(brand, year);
+
+                if (airplane != null)
+                    return airplane;
+
+                _current = _current.Next;
+            }
+
+            return null;
         }
 
         public Airport Peek()

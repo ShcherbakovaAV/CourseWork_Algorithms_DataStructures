@@ -34,15 +34,6 @@ namespace CourseWork_Algorithms_Data_Structures
             Count++;
         }
 
-        public void Push(string brand, int year)
-        {
-            if (brand is null || year == 0)
-                throw new ArgumentNullException();
-
-            Airplane airplane = new Airplane(brand, year);
-            Push(airplane);
-        }
-
         public Airplane Pop()
         {
             if (IsEmpty)
@@ -60,20 +51,22 @@ namespace CourseWork_Algorithms_Data_Structures
             return _head.Airplane;
         }
 
-        public bool Contains(Airplane airplane)
+        public Airplane Contains_Airplane(string brand, int year)
         {
             ElementSecondaryStructure _current = _head;
 
             while (_current != null)
             {
-                if (_current.Airplane == airplane)
-                    return true;
+                if (_current.Airplane.Brand == brand && _current.Airplane.YearofManufacture == year)
+                    return _current.Airplane;
 
                 _current = _current.Next;
             }
 
-            return false;
+            return null;
         }
+
+        
 
         public void Clear()
         {
