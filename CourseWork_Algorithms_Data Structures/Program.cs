@@ -28,6 +28,26 @@ namespace CourseWork_Algorithms_Data_Structures
                 Console.WriteLine();
             }
 
+            Repository rep = new Repository();
+
+            AirCompany company2 = rep.DownloadFromXml("company.xml");
+
+            Console.WriteLine();
+            Console.WriteLine();
+
+            foreach (var airport in company2)
+            {
+                Console.Write($"{airport.Name}: ");
+
+                foreach (var airplane in airport)
+                {
+                    Console.Write($"{airplane.Brand}-{airplane.YearofManufacture}; ");
+                }
+
+                Console.WriteLine();
+            }
+
+
         }
     }
 }
