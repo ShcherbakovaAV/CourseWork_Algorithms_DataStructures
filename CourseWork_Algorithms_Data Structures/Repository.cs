@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using System;
 using System.Xml;
 using System.Xml.Linq;
 
@@ -9,12 +10,36 @@ namespace CourseWork_Algorithms_Data_Structures
     /// </summary>
     public class Repository
     {
+        private readonly string _filePathInput;
+
+        private readonly string _filePathOutput;
+
+        public Repository()
+        {
+            var configuration = new ConfigurationBuilder()
+                .AddJsonFile("config.json", optional: false, reloadOnChange: true)
+                .Build();
+
+            var section = configuration.GetSection("Configuration");
+            var settings = section.Get<Configuration>();
+
+            _filePathInput = settings.FileInput;
+            _filePathOutput = settings.FileOutput;
+
+        }
+
+        public Repository(string filePathInput, string filePathOutput)
+        {
+            _filePathInput = filePathInput;
+            _filePathOutput = filePathOutput;
+        }
+
         /// <summary>
         /// Сохранение структуры
         /// </summary>
         /// <param name="file_path"></param>
         /// <param name="company"></param>
-        public void SaveToXml(string file_path, AirCompany company)
+        public void SaveToXml(AirCompany company, string file_path = null)
         {
             XDocument xdoc = new XDocument();
 
@@ -48,7 +73,10 @@ namespace CourseWork_Algorithms_Data_Structures
             xdoc.Add(company_);
 
             //сохраняем документ
-            xdoc.Save(file_path);
+            if (file_path is null)
+                xdoc.Save(_filePathOutput);
+            else
+                xdoc.Save(file_path);
         }
 
         /// <summary>
@@ -56,11 +84,14 @@ namespace CourseWork_Algorithms_Data_Structures
         /// </summary>
         /// <param name="file_path"></param>
         /// <returns></returns>
-        public AirCompany DownloadFromXml(string file_path)
+        public AirCompany DownloadFromXml(string file_path = null)
         {
             XmlDocument xDoc = new XmlDocument();
 
-            xDoc.Load(file_path);
+            if (file_path is null)
+                xDoc.Load(_filePathInput);
+            else
+                xDoc.Load(file_path);
 
             XmlElement xRoot = xDoc.DocumentElement;
 
