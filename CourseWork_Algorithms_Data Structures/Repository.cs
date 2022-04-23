@@ -32,12 +32,7 @@ namespace CourseWork_Algorithms_Data_Structures
             _filePathOutput = settings.FileOutput;
             _xmlService = xmlService;
 
-        }
-
-        public Repository(IWorkingFileService xmlService, string filePathInput, string filePathOutput)
-        {
-            _filePathInput = filePathInput;
-            _filePathOutput = filePathOutput;
+            this.DownloadFromXml();
         }
 
         /// <summary>

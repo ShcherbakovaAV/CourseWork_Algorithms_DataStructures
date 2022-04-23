@@ -19,26 +19,24 @@ namespace CourseWork_Algorithms_Data_Structures
 
             Repository rep = new Repository(service);
 
-            Console.WriteLine();
-            Console.WriteLine();
 
-            foreach (var airport in company2)
-            {
-                Console.Write($"{airport.Name}: ");
+            //foreach (var airport in company2)
+            //{
+            //    Console.Write($"{airport.Name}: ");
 
-                foreach (var airplane in airport)
-                {
-                    Console.Write($"{airplane.Brand}-{airplane.YearofManufacture}; ");
-                }
+            //    foreach (var airplane in airport)
+            //    {
+            //        Console.Write($"{airplane.Brand}-{airplane.YearofManufacture}; ");
+            //    }
 
-                Console.WriteLine();
-            }
+            //    Console.WriteLine();
+            //}
 
-            company2.PushAirport("Санкт-Петербург");
-            company2.PushAirplane("ИЛ-81", 2010, "Санкт-Петербург");
-            company2.PushAirplane("ИЛ-89", 2012, "Санкт-Петербург");
+            //company2.PushAirport("Санкт-Петербург");
+            //company2.PushAirplane("ИЛ-81", 2010, "Санкт-Петербург");
+            //company2.PushAirplane("ИЛ-89", 2012, "Санкт-Петербург");
 
-            rep.SaveToXml(company2);
+            //rep.SaveToXml(company2);
         }
     }
 }
