@@ -19,6 +19,13 @@ namespace CourseWork_Algorithms_Data_Structures
 
             Repository rep = new Repository(service);
 
+            var airport = rep.ContainsAirport("Екатеринбург");
+
+            if (airport is null)
+                Console.WriteLine("Не содержится");
+            else
+                Console.WriteLine("Содержится");
+
 
             //foreach (var airport in company2)
             //{

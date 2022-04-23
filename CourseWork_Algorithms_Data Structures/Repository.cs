@@ -35,6 +35,45 @@ namespace CourseWork_Algorithms_Data_Structures
             this.DownloadFromXml();
         }
 
+        public void AddAirport(string name_airport)
+        {
+            _mainStructure.PushAirport(name_airport);
+        }
+
+        public void AddAirplane(string brand, int year, string name_airport)
+        {
+            _mainStructure.PushAirplane(brand, year, name_airport);
+        }
+
+        public bool DeleteAirport()
+        {
+            Airport airport = _mainStructure.PopAirport();
+            if (airport is null)
+                return false;
+            else
+                return true;
+        }
+        
+        public bool DeleteAirplane(string name_airport)
+        {
+            Airplane airplane = _mainStructure.PopAirplane(name_airport);
+
+            if (airplane is null)
+                return false;
+            else
+                return true;
+        }
+
+        public Airport ContainsAirport(string name_airport)
+        {
+            return _mainStructure.Contains_Airport(name_airport);
+        }
+
+        public Airplane ContainsAirplane(string brand, int year)
+        {
+            return _mainStructure.Contains_Airplane(brand, year);
+        }
+
         /// <summary>
         /// Сохранение структуры
         /// </summary>
