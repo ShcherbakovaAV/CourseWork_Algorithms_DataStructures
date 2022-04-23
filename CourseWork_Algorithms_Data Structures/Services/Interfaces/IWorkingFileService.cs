@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace CourseWork_Algorithms_Data_Structures.Services.Interfaces
 {
-    public interface IXmlService
+    public interface IWorkingFileService
     {
-        void SaveToXml(AirCompany company, string file_path);
+        void Save(AirCompany company, string file_path);
 
-        AirCompany DownloadFromXml(string file_path);
+        AirCompany Download(string file_path);
     }
 }

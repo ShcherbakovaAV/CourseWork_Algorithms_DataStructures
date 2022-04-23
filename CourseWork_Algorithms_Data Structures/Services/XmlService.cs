@@ -9,9 +9,9 @@ using System.Xml.Linq;
 
 namespace CourseWork_Algorithms_Data_Structures.Services
 {
-    public class XmlService : IXmlService
+    public class XmlService : IWorkingFileService
     {
-        public AirCompany DownloadFromXml(string file_path)
+        public AirCompany Download(string file_path)
         {
             XmlDocument xDoc = new XmlDocument();
 
@@ -57,7 +57,7 @@ namespace CourseWork_Algorithms_Data_Structures.Services
             return company;
         }
 
-        public void SaveToXml(AirCompany company, string file_path)
+        public void Save(AirCompany company, string file_path)
         {
             XDocument xdoc = new XDocument();
 
