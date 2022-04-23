@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using CourseWork_Algorithms_Data_Structures.Services.Interfaces;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Xml;
 using System.Xml.Linq;
@@ -14,7 +15,9 @@ namespace CourseWork_Algorithms_Data_Structures
 
         private readonly string _filePathOutput;
 
-        public Repository()
+        private readonly IWorkingFileService _xmlService;
+
+        public Repository(IWorkingFileService xmlService)
         {
             var configuration = new ConfigurationBuilder()
                 .AddJsonFile("config.json", optional: false, reloadOnChange: true)
@@ -25,7 +28,7 @@ namespace CourseWork_Algorithms_Data_Structures
 
             _filePathInput = settings.FileInput;
             _filePathOutput = settings.FileOutput;
-
+            _xmlService = xmlService;
         }
 
         public Repository(string filePathInput, string filePathOutput)
@@ -41,7 +44,13 @@ namespace CourseWork_Algorithms_Data_Structures
         /// <param name="company"></param>
         public void SaveToXml(AirCompany company, string file_path = null)
         {
-            
+            if (company == null)
+                throw new ArgumentNullException(nameof(company));
+
+            if (file_path is null)
+                _xmlService.Save(company, _filePathInput);
+            else
+                _xmlService.Save(company, file_path);
         }
 
         /// <summary>
@@ -51,7 +60,17 @@ namespace CourseWork_Algorithms_Data_Structures
         /// <returns></returns>
         public AirCompany DownloadFromXml(string file_path = null)
         {
-            
+            AirCompany company = null;
+
+            if (file_path is null)
+                company = _xmlService.Download(_filePathInput);
+            else
+                company = _xmlService.Download(file_path);
+
+            if (company is null)
+                throw new NullReferenceException("Компания не создана");
+
+            return company;
         }
     }
 }

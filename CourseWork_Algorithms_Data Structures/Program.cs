@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CourseWork_Algorithms_Data_Structures.Services;
+using CourseWork_Algorithms_Data_Structures.Services.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace CourseWork_Algorithms_Data_Structures
 {
@@ -6,31 +9,17 @@ namespace CourseWork_Algorithms_Data_Structures
     {
         static void Main(string[] args)
         {
-            AirCompany company = new AirCompany("Победа");
+            var service_collection = new ServiceCollection();
 
-            company.PushAirport("Казань");
-            company.PushAirport("Москва");
-            company.PushAirport("Екатеринбург");
+            service_collection.AddSingleton<IWorkingFileService, XmlService>();
 
-            company.PushAirplane("ТУ-204", 2005, "Казань");
-            company.PushAirplane("МС-21", 2005, "Казань");
-            company.PushAirplane("ТУ-141", 2005, "Москва");
+            var provider = service_collection.BuildServiceProvider();
 
-            foreach (var airport in company)
-            {
-                Console.Write($"{airport.Name}: ");
+            var service = provider.GetRequiredService<IWorkingFileService>();
 
-                foreach (var airplane in airport)
-                {
-                    Console.Write($"{airplane.Brand}-{airplane.YearofManufacture}; ");
-                }
+            Repository rep = new Repository(service);
 
-                Console.WriteLine();
-            }
-
-            Repository rep = new Repository();
-
-            AirCompany company2 = rep.DownloadFromXml("company.xml");
+            AirCompany company2 = rep.DownloadFromXml();
 
             Console.WriteLine();
             Console.WriteLine();
