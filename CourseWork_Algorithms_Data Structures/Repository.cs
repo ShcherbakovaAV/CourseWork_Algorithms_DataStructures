@@ -31,7 +31,7 @@ namespace CourseWork_Algorithms_Data_Structures
             _xmlService = xmlService;
         }
 
-        public Repository(string filePathInput, string filePathOutput)
+        public Repository(IWorkingFileService xmlService, string filePathInput, string filePathOutput)
         {
             _filePathInput = filePathInput;
             _filePathOutput = filePathOutput;
@@ -48,7 +48,7 @@ namespace CourseWork_Algorithms_Data_Structures
                 throw new ArgumentNullException(nameof(company));
 
             if (file_path is null)
-                _xmlService.Save(company, _filePathInput);
+                _xmlService.Save(company, _filePathOutput);
             else
                 _xmlService.Save(company, file_path);
         }
