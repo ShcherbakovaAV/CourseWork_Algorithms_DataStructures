@@ -36,7 +36,11 @@ namespace CourseWork_Algorithms_Data_Structures
                 Console.WriteLine();
             }
 
+            company2.PushAirport("Санкт-Петербург");
+            company2.PushAirplane("ИЛ-81", 2010, "Санкт-Петербург");
+            company2.PushAirplane("ИЛ-89", 2012, "Санкт-Петербург");
 
+            rep.SaveToXml(company2);
         }
     }
 }
