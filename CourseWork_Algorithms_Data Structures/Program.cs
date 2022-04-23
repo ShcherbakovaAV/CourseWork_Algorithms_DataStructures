@@ -19,8 +19,6 @@ namespace CourseWork_Algorithms_Data_Structures
 
             Repository rep = new Repository(service);
 
-            AirCompany company2 = rep.DownloadFromXml();
-
             Console.WriteLine();
             Console.WriteLine();
 

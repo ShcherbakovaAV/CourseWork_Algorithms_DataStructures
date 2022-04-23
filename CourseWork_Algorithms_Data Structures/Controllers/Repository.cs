@@ -7,7 +7,7 @@ using System.Xml.Linq;
 namespace CourseWork_Algorithms_Data_Structures
 {
     /// <summary>
-    /// Класс, предназначенный для работы с xml
+    /// Класс, предназначенный для работы со структурой
     /// </summary>
     public class Repository
     {
@@ -16,6 +16,8 @@ namespace CourseWork_Algorithms_Data_Structures
         private readonly string _filePathOutput;
 
         private readonly IWorkingFileService _xmlService;
+
+        private AirCompany _mainStructure;
 
         public Repository(IWorkingFileService xmlService)
         {
@@ -29,6 +31,7 @@ namespace CourseWork_Algorithms_Data_Structures
             _filePathInput = settings.FileInput;
             _filePathOutput = settings.FileOutput;
             _xmlService = xmlService;
+
         }
 
         public Repository(IWorkingFileService xmlService, string filePathInput, string filePathOutput)
@@ -58,7 +61,7 @@ namespace CourseWork_Algorithms_Data_Structures
         /// </summary>
         /// <param name="file_path"></param>
         /// <returns></returns>
-        public AirCompany DownloadFromXml(string file_path = null)
+        private void DownloadFromXml(string file_path = null)
         {
             AirCompany company = null;
 
@@ -70,7 +73,7 @@ namespace CourseWork_Algorithms_Data_Structures
             if (company is null)
                 throw new NullReferenceException("Компания не создана");
 
-            return company;
+            this._mainStructure = company;
         }
     }
 }
