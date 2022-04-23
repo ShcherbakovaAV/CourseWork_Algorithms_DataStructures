@@ -9,6 +9,11 @@ namespace CourseWork_Algorithms_Data_Structures
     /// </summary>
     public class Repository
     {
+        /// <summary>
+        /// Сохранение структуры
+        /// </summary>
+        /// <param name="file_path"></param>
+        /// <param name="company"></param>
         public void SaveToXml(string file_path, AirCompany company)
         {
             XDocument xdoc = new XDocument();
@@ -46,6 +51,11 @@ namespace CourseWork_Algorithms_Data_Structures
             xdoc.Save(file_path);
         }
 
+        /// <summary>
+        /// Выгрузка структуры
+        /// </summary>
+        /// <param name="file_path"></param>
+        /// <returns></returns>
         public AirCompany DownloadFromXml(string file_path)
         {
             XmlDocument xDoc = new XmlDocument();
@@ -82,7 +92,6 @@ namespace CourseWork_Algorithms_Data_Structures
                             }
                         }
                         
-
                         Airplane airplane = new Airplane(airplane_name, Convert.ToInt32(airplane_year));
 
                         airport.Push(airplane);
