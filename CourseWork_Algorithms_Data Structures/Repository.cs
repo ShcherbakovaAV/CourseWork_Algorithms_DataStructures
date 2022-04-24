@@ -19,6 +19,12 @@ namespace CourseWork_Algorithms_Data_Structures
 
         private AirCompany _mainStructure;
 
+        /// <summary>
+        /// Получение главной структуры
+        /// </summary>
+        /// <returns></returns>
+        public AirCompany GetMainStructure() => _mainStructure;
+
         public Repository(IWorkingFileService xmlService)
         {
             var configuration = new ConfigurationBuilder()

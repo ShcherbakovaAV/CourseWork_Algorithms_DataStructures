@@ -20,7 +20,7 @@ namespace CourseWork_Algorithms_Data_Structures
             //Создание объекта - Репозиторий, главный класс, для работы со структурой
             Repository rep = new Repository(service);
 
-            
+            ConsoleApp.Run(rep);
         }
     }
 }
