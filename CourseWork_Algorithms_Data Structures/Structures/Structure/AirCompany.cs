@@ -23,9 +23,6 @@ namespace CourseWork_Algorithms_Data_Structures
 
         public void PushAirport(Airport airport)
         {
-            if (airport is null)
-                throw new ArgumentNullException(nameof(airport));
-
             ElementMainStructure node = new ElementMainStructure(airport);
 
             if (Count == 0)
@@ -44,9 +41,6 @@ namespace CourseWork_Algorithms_Data_Structures
 
         public void PushAirport(string name_airport)
         {
-            if (name_airport is null)
-                throw new ArgumentNullException(nameof(name_airport));
-
             Airport airport = new Airport(name_airport);
             PushAirport(airport);
         }
@@ -63,9 +57,6 @@ namespace CourseWork_Algorithms_Data_Structures
 
         public void PushAirplane(string brand, int year, string name_airport)
         {
-            if (brand is null || year == 0)
-                throw new ArgumentNullException();
-
             Airplane airplane = new Airplane(brand, year);
 
             PushAirplane(airplane, name_airport);

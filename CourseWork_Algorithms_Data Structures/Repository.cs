@@ -37,11 +37,17 @@ namespace CourseWork_Algorithms_Data_Structures
 
         public void AddAirport(string name_airport)
         {
+            if (name_airport is null)
+                throw new ArgumentNullException(nameof(name_airport));
+
             _mainStructure.PushAirport(name_airport);
         }
 
         public void AddAirplane(string brand, int year, string name_airport)
         {
+            if (brand is null || (year < 1970 &&  year > 2022) || name_airport is null)
+                throw new ArgumentNullException();
+
             _mainStructure.PushAirplane(brand, year, name_airport);
         }
 
