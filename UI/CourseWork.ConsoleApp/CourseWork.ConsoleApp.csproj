@@ -10,8 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CourseWork.Repository\CourseWork.Repository.csproj" />
-    <ProjectReference Include="..\CourseWork.Services\CourseWork.Services.csproj" />
+    <ProjectReference Include="..\..\Common\CourseWork.Repository\CourseWork.Repository.csproj" />
+    <ProjectReference Include="..\..\Services\CourseWork.Services\CourseWork.Services.csproj" />
   </ItemGroup>
 
 </Project>

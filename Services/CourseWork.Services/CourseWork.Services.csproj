@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CourseWork.Structures\CourseWork.Structures.csproj" />
+    <ProjectReference Include="..\..\Structures\CourseWork.Structures\CourseWork.Structures.csproj" />
   </ItemGroup>
 
 </Project>

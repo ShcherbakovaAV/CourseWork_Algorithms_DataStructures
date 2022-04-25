@@ -11,8 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CourseWork.Services\CourseWork.Services.csproj" />
-    <ProjectReference Include="..\CourseWork.Structures\CourseWork.Structures.csproj" />
+    <ProjectReference Include="..\..\Services\CourseWork.Services\CourseWork.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>
