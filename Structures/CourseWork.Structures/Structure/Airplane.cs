@@ -2,9 +2,9 @@
 {
     public class Airplane
     {
-        public string Brand { get; private set; }
+        public string Brand { get; set; }
 
-        public int YearofManufacture { get; private set; }
+        public int YearofManufacture { get; set; }
 
         public Airplane(string Brand, int YearofManufacture)
         {

@@ -121,5 +121,6 @@ namespace CourseWork_Algorithms_Data_Structures
 
             this._mainStructure = company;
         }
+
     }
 }
