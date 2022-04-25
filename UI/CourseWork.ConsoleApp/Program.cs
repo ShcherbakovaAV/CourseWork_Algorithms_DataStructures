@@ -1,4 +1,5 @@
-﻿using CourseWork_Algorithms_Data_Structures;
+﻿using CourseWork.Services;
+using CourseWork_Algorithms_Data_Structures;
 using CourseWork_Algorithms_Data_Structures.Services;
 using CourseWork_Algorithms_Data_Structures.Services.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,29 +23,13 @@ namespace CourseWork.ConsoleApp
             //Создание объекта - Репозиторий, главный класс, для работы со структурой
             Repository rep = new Repository(service);
 
-            var _object = new ObjMainJson()
-            {
-                Name = rep.GetMainStructure().Name,
-                Airports = new List<ObjSecondJson>()
-            };
+            JsonService _service = new JsonService();
 
-            foreach (var _airport in rep.GetMainStructure())
-            {
-                var airport = new ObjSecondJson()
-                {
-                    Name = _airport.Name,
-                    Airplanes = new List<Airplane>()
-                };
-                foreach (var _airplane in _airport)
-                {
-                    var airplane = new Airplane(_airplane.Brand, _airplane.YearofManufacture);
-                    airport.Airplanes.Add(airplane);
-                }
-                _object.Airports.Add(airport);
-            }
+            var structure = _service.Download("company.json");
 
-            string str = JsonConvert.SerializeObject(_object);
-            Console.WriteLine(str);
+            structure.PushAirport("Южно-Сахалинск");
+            structure.PushAirplane("СУ-24", 1999, "Южно-Сахалинск");
+            _service.Save(structure, "company_new.json");
             //AirCompany deserializedProduct = JsonConvert.DeserializeObject<AirCompany>(str);
             //App.Run(rep);
         }

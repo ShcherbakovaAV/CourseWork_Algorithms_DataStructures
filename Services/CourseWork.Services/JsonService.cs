@@ -12,7 +12,7 @@ namespace CourseWork.Services
     {
         public AirCompany Download(string file_path)
         {
-            var main_object = JsonConvert.DeserializeObject<ObjMainJson>(file_path);
+            var main_object = JsonConvert.DeserializeObject<ObjMainJson>(File.ReadAllText(file_path));
 
             AirCompany company = new AirCompany(main_object.Name);
 
