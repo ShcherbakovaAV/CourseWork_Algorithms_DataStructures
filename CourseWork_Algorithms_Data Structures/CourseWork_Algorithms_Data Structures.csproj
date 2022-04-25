@@ -13,10 +13,4 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="config.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>
