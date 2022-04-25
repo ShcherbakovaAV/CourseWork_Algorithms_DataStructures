@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CourseWork_Algorithms_Data_Structures;
+using CourseWork_Algorithms_Data_Structures.Services;
+using CourseWork_Algorithms_Data_Structures.Services.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CourseWork.ConsoleApp
 {
@@ -16,7 +19,8 @@ namespace CourseWork.ConsoleApp
             //Создание объекта - Репозиторий, главный класс, для работы со структурой
             Repository rep = new Repository(service);
 
-            ConsoleApp.Run(rep);
+            
+            App.Run(rep);
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CourseWork_Algorithms_Data_Structures
 {
-    public class ConsoleApp
+    public class App
     {
         public static void Run(Repository repository)
         {
