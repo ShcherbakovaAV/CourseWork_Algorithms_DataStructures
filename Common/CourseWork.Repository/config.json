@@ -1,6 +1,12 @@
 {
   "Configuration": {
-    "FileInput": "company.xml",
-    "FileOutput": "company_new.xml"
+    "Xml": {
+      "FileInput": "company.xml",
+      "FileOutput": "company_new.xml"
+    },
+    "Json": {
+      "FileInput": "company.json",
+      "FileOutput": "company_new.json"
+    }
   }
 }

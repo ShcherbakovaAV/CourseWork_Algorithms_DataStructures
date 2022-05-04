@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using CourseWork.Repository.Settings;
+using Microsoft.Extensions.Configuration;
 
 
 namespace CourseWork_Algorithms_Data_Structures
@@ -8,15 +9,9 @@ namespace CourseWork_Algorithms_Data_Structures
     /// </summary>
     public class Configuration
     {
-        /// <summary>
-        /// Путь файла, по которому загружаем структуру
-        /// </summary>
-        public string FileInput { get; set; }
+        public ConfigurationXml Xml { get; set; }
 
-        /// <summary>
-        /// Путь файла, из которого загружаем структуру
-        /// </summary>
-        public string FileOutput { get; set; }
+        public ConfigurationJson Json { get; set; }
 
     }
 }

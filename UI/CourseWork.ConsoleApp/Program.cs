@@ -21,7 +21,9 @@ namespace CourseWork.ConsoleApp
             var service = provider.GetRequiredService<IWorkingFileService>();
 
             //Создание объекта - Репозиторий, главный класс, для работы со структурой
-            Repository rep = new Repository(service);
+            //Repository rep = new Repository(service);
+
+            Storage repo = new Storage(service);
 
             JsonService _service = new JsonService();
 
