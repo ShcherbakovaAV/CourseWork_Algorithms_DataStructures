@@ -1,4 +1,5 @@
-﻿using CourseWork.Services.JsonModels;
+﻿using CourseWork.Services.Interfaces;
+using CourseWork.Services.JsonModels;
 using CourseWork_Algorithms_Data_Structures;
 using CourseWork_Algorithms_Data_Structures.Services.Interfaces;
 using Newtonsoft.Json;
@@ -8,7 +9,7 @@ using System.IO;
 
 namespace CourseWork.Services
 {
-    public class JsonService : IWorkingFileService
+    public class JsonService : IWorkingJsonFileService
     {
         public AirCompany Download(string file_path)
         {

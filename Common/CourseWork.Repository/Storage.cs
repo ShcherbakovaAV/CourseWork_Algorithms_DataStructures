@@ -15,7 +15,7 @@ namespace CourseWork_Algorithms_Data_Structures
 
         private readonly string _filePathOutput;
 
-        private readonly IWorkingFileService _xmlService;
+        private readonly IWorkingXmlFileService _xmlService;
 
         private AirCompany _mainStructure;
 
@@ -25,7 +25,7 @@ namespace CourseWork_Algorithms_Data_Structures
         /// <returns></returns>
         public AirCompany GetMainStructure() => _mainStructure;
 
-        public Storage(IWorkingFileService xmlService)
+        public Storage(IWorkingXmlFileService xmlService)
         {
             var configuration = new ConfigurationBuilder()
                 .AddJsonFile("config.json", optional: false, reloadOnChange: true)

@@ -9,31 +9,31 @@ using System.Collections.Generic;
 
 namespace CourseWork.ConsoleApp
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
+            //Коллекция сервисов
             var service_collection = new ServiceCollection();
-            service_collection.AddSingleton<IWorkingFileService, XmlService>();
+
+            Console.WriteLine("Выберите тип файлов, с которыми будете работать: 1 - xml; 2 - json");
+            Console.Write("Выбор: ");
+            int choice = int.Parse(Console.ReadLine());
+
+            if (choice == 1)
+                service_collection.AddSingleton<IWorkingXmlFileService, XmlService>();
+            else
+                service_collection.AddSingleton<IWorkingXmlFileService, JsonService>();
 
             //Получение сервисов
             var provider = service_collection.BuildServiceProvider();
-            var service = provider.GetRequiredService<IWorkingFileService>();
+            var service = provider.GetRequiredService<IWorkingXmlFileService>();
 
             //Создание объекта - Репозиторий, главный класс, для работы со структурой
-            //Repository rep = new Repository(service);
+            Storage storage = new Storage(service);
 
-            Storage repo = new Storage(service);
-
-            JsonService _service = new JsonService();
-
-            var structure = _service.Download("company.json");
-
-            structure.PushAirport("Южно-Сахалинск");
-            structure.PushAirplane("СУ-24", 1999, "Южно-Сахалинск");
-            _service.Save(structure, "company_new.json");
-            //AirCompany deserializedProduct = JsonConvert.DeserializeObject<AirCompany>(str);
-            //App.Run(rep);
+            //Запуск приложения
+            App.Run(storage);
         }
     }
 }

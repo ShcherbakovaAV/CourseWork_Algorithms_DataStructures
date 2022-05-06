@@ -12,7 +12,7 @@ namespace CourseWork_Algorithms_Data_Structures.Services
     /// <summary>
     /// Сервис, для работы с XML-файлом
     /// </summary>
-    public class XmlService : IWorkingFileService
+    public class XmlService : IWorkingXmlFileService
     {
         public AirCompany Download(string file_path)
         {
