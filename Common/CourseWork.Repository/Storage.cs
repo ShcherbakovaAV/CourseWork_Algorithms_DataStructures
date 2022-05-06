@@ -9,7 +9,7 @@ namespace CourseWork_Algorithms_Data_Structures
     /// <summary>
     /// Класс, предназначенный для работы со структурой
     /// </summary>
-    public class Repository
+    public class Storage
     {
         private readonly string _filePathInput;
 
@@ -25,7 +25,7 @@ namespace CourseWork_Algorithms_Data_Structures
         /// <returns></returns>
         public AirCompany GetMainStructure() => _mainStructure;
 
-        public Repository(IWorkingFileService xmlService)
+        public Storage(IWorkingFileService xmlService)
         {
             var configuration = new ConfigurationBuilder()
                 .AddJsonFile("config.json", optional: false, reloadOnChange: true)
@@ -34,8 +34,8 @@ namespace CourseWork_Algorithms_Data_Structures
             var section = configuration.GetSection("Configuration");
             var settings = section.Get<Configuration>();
 
-            _filePathInput = settings.FileInput;
-            _filePathOutput = settings.FileOutput;
+            _filePathInput = settings.Xml.FileInput;
+            _filePathOutput = settings.Xml.FileOutput;
             _xmlService = xmlService;
 
             this.DownloadFromXml();

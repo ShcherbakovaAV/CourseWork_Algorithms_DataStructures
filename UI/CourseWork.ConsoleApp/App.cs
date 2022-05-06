@@ -8,7 +8,7 @@ namespace CourseWork_Algorithms_Data_Structures
 {
     public class App
     {
-        public static void Run(Repository repository)
+        public static void Run(Storage repository)
         {
             Console.WriteLine("Консольный интерфейс для работы со структурой");
             Console.WriteLine("Выбирите действия:");
