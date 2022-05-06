@@ -1,4 +1,5 @@
-﻿using CourseWork_Algorithms_Data_Structures.Services.Interfaces;
+﻿using CourseWork.Services.Interfaces;
+using CourseWork_Algorithms_Data_Structures.Services.Interfaces;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Xml;
@@ -11,11 +12,10 @@ namespace CourseWork_Algorithms_Data_Structures
     /// </summary>
     public class Storage
     {
-        private readonly string _filePathInput;
-
-        private readonly string _filePathOutput;
+        private Configuration _configuration;
 
         private readonly IWorkingXmlFileService _xmlService;
+        private readonly IWorkingJsonFileService _jsonService;
 
         private AirCompany _mainStructure;
 
@@ -25,18 +25,17 @@ namespace CourseWork_Algorithms_Data_Structures
         /// <returns></returns>
         public AirCompany GetMainStructure() => _mainStructure;
 
-        public Storage(IWorkingXmlFileService xmlService)
+        public Storage(IWorkingXmlFileService xmlService, IWorkingJsonFileService jsonService)
         {
+            _xmlService = xmlService;
+            _jsonService = jsonService;
+
             var configuration = new ConfigurationBuilder()
                 .AddJsonFile("config.json", optional: false, reloadOnChange: true)
                 .Build();
 
             var section = configuration.GetSection("Configuration");
-            var settings = section.Get<Configuration>();
-
-            _filePathInput = settings.Xml.FileInput;
-            _filePathOutput = settings.Xml.FileOutput;
-            _xmlService = xmlService;
+            _configuration = section.Get<Configuration>();
 
             this.DownloadFromXml();
         }
@@ -97,7 +96,7 @@ namespace CourseWork_Algorithms_Data_Structures
                 throw new ArgumentNullException(nameof(company));
 
             if (file_path is null)
-                _xmlService.Save(company, _filePathOutput);
+                _xmlService.Save(company, _configuration.Xml.FileOutput);
             else
                 _xmlService.Save(company, file_path);
         }
@@ -112,7 +111,7 @@ namespace CourseWork_Algorithms_Data_Structures
             AirCompany company = null;
 
             if (file_path is null)
-                company = _xmlService.Download(_filePathInput);
+                company = _xmlService.Download(_configuration.Xml.FileOutput);
             else
                 company = _xmlService.Download(file_path);
 

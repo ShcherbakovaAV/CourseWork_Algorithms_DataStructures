@@ -1,4 +1,5 @@
 ﻿using CourseWork.Services;
+using CourseWork.Services.Interfaces;
 using CourseWork_Algorithms_Data_Structures;
 using CourseWork_Algorithms_Data_Structures.Services;
 using CourseWork_Algorithms_Data_Structures.Services.Interfaces;
@@ -16,21 +17,16 @@ namespace CourseWork.ConsoleApp
             //Коллекция сервисов
             var service_collection = new ServiceCollection();
 
-            Console.WriteLine("Выберите тип файлов, с которыми будете работать: 1 - xml; 2 - json");
-            Console.Write("Выбор: ");
-            int choice = int.Parse(Console.ReadLine());
-
-            if (choice == 1)
-                service_collection.AddSingleton<IWorkingXmlFileService, XmlService>();
-            else
-                service_collection.AddSingleton<IWorkingXmlFileService, JsonService>();
+            service_collection.AddSingleton<IWorkingXmlFileService, XmlService>();
+            service_collection.AddSingleton<IWorkingJsonFileService, JsonService>();
 
             //Получение сервисов
             var provider = service_collection.BuildServiceProvider();
-            var service = provider.GetRequiredService<IWorkingXmlFileService>();
+            var xml_service = provider.GetRequiredService<IWorkingXmlFileService>();
+            var json_service = provider.GetRequiredService<IWorkingJsonFileService>();
 
             //Создание объекта - Репозиторий, главный класс, для работы со структурой
-            Storage storage = new Storage(service);
+            Storage storage = new Storage(xml_service, json_service);
 
             //Запуск приложения
             App.Run(storage);
