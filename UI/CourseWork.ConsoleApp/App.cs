@@ -22,6 +22,8 @@ namespace CourseWork_Algorithms_Data_Structures
                 Console.WriteLine("5 - Удаление самолета");
                 Console.WriteLine("6 - Поиск аэропорта");
                 Console.WriteLine("7 - Поиск самолета");
+                Console.WriteLine("8 - Сохранение в XML файл");
+                Console.WriteLine("9 - Сохранение в JSON-файл");
 
                 Console.Write("Выбор: ");
                 int choice = int.Parse(Console.ReadLine());
@@ -132,6 +134,24 @@ namespace CourseWork_Algorithms_Data_Structures
                     {
                         Console.WriteLine(ex.Message);
                     }
+                }
+                else if (choice == 8)
+                {
+                    Console.Write("Введите название xml файла: ");
+                    string file_path = Console.ReadLine();
+                    if (string.IsNullOrEmpty(file_path))
+                        repository.SaveToXml();
+                    else
+                        repository.SaveToXml(file_path);
+                }
+                else if (choice == 9)
+                {
+                    Console.Write("Введите название json файла: ");
+                    string file_path = Console.ReadLine();
+                    if (string.IsNullOrEmpty(file_path))
+                        repository.SaveToJson();
+                    else
+                        repository.SaveToJson(file_path);
                 }
                 else if (choice == 0)
                     break;
