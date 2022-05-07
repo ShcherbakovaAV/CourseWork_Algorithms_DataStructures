@@ -80,13 +80,13 @@ namespace CourseWork_Algorithms_Data_Structures
             return _mainStructure.Contains_Airport(name_airport);
         }
 
-        public Airplane ContainsAirplane(string brand, int year)
+        public Airplane ContainsAirplane(string brand, int year, out string name_airport)
         {
-            return _mainStructure.Contains_Airplane(brand, year);
+            return _mainStructure.Contains_Airplane(brand, year, out name_airport);
         }
 
         /// <summary>
-        /// Сохранение структуры
+        /// Сохранение структуры в xml
         /// </summary>
         /// <param name="file_path"></param>
         /// <param name="company"></param>
@@ -102,7 +102,7 @@ namespace CourseWork_Algorithms_Data_Structures
         }
 
         /// <summary>
-        /// Выгрузка структуры
+        /// Выгрузка структуры из xml
         /// </summary>
         /// <param name="file_path"></param>
         /// <returns></returns>
@@ -111,9 +111,35 @@ namespace CourseWork_Algorithms_Data_Structures
             AirCompany company = null;
 
             if (file_path is null)
-                company = _xmlService.Download(_configuration.Xml.FileOutput);
+                company = _xmlService.Download(_configuration.Xml.FileInput);
             else
                 company = _xmlService.Download(file_path);
+
+            if (company is null)
+                throw new NullReferenceException("Компания не создана");
+
+            this._mainStructure = company;
+        }
+
+        public void SaveToJson(AirCompany company, string file_path = null)
+        {
+            if (company == null)
+                throw new ArgumentNullException(nameof(company));
+
+            if (file_path is null)
+                _jsonService.Save(company, _configuration.Json.FileOutput);
+            else
+                _jsonService.Save(company, file_path);
+        }
+
+        public void DownloadFromJson(string file_path = null)
+        {
+            AirCompany company = null;
+
+            if (file_path is null)
+                company = _jsonService.Download(_configuration.Json.FileOutput);
+            else
+                company = _jsonService.Download(file_path);
 
             if (company is null)
                 throw new NullReferenceException("Компания не создана");

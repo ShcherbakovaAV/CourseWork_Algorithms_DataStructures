@@ -111,12 +111,16 @@ namespace CourseWork_Algorithms_Data_Structures
             return null;
         }
 
-        public Airplane Contains_Airplane(string brand, int year)
+        public Airplane Contains_Airplane(string brand, int year, out string name_airport)
         {
             ElementMainStructure _current = _head;
 
+            name_airport = null;
+
             while (_current != null)
             {
+                name_airport = _current.Airport.Name;
+
                 Airplane airplane = _current.Airport.Contains_Airplane(brand, year);
 
                 if (airplane != null)
