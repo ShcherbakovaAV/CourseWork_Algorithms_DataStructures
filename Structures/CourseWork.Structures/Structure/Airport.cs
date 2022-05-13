@@ -64,8 +64,6 @@ namespace CourseWork_Algorithms_Data_Structures
             return null;
         }
 
-        
-
         public void Clear()
         {
             ElementSecondaryStructure _current = _head;
@@ -73,11 +71,12 @@ namespace CourseWork_Algorithms_Data_Structures
             while (_current != null)
             {
                 ElementSecondaryStructure temp = _current;
+                _current = _current.Next;
                 temp.Airplane = null;
                 temp = null;
-                _current = _current.Next;
             }
             _head = null;
+            Count = 0;
         }
 
         public IEnumerator<Airplane> GetEnumerator()

@@ -146,14 +146,15 @@ namespace CourseWork_Algorithms_Data_Structures
             while (_current != null)
             {
                 ElementMainStructure temp = _current;
+                _current = _current.Next;
                 temp.Airport.Clear();
                 temp.Airport = null;
                 temp = null;
-                _current = _current.Next;
             }
 
             _head = null;
-            _tail = null;  
+            _tail = null;
+            Count = 0;
         }
 
         public IEnumerator<Airport> GetEnumerator()

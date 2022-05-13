@@ -24,6 +24,7 @@ namespace CourseWork_Algorithms_Data_Structures
                 Console.WriteLine("7 - Поиск самолета");
                 Console.WriteLine("8 - Сохранение в XML файл");
                 Console.WriteLine("9 - Сохранение в JSON-файл");
+                Console.WriteLine("10 - Очистить структуру");
 
                 Console.Write("Выбор: ");
                 int choice = int.Parse(Console.ReadLine());
@@ -32,6 +33,12 @@ namespace CourseWork_Algorithms_Data_Structures
                 if (choice == 1)
                 {
                     AirCompany company = repository.GetMainStructure();
+
+                    if (company.IsEmpty)
+                    {
+                        Console.WriteLine("Структура пустая!");
+                        continue;
+                    }
 
                     foreach (var airport in company)
                     {
@@ -108,15 +115,16 @@ namespace CourseWork_Algorithms_Data_Structures
                 {
                     Console.Write("Введите название аэропорта: ");
                     string name_airport = Console.ReadLine();
+                    Airport airport = null;
                     try
                     {
-                        var airport = repository.ContainsAirport(name_airport);
-                        Console.WriteLine($"Аэропорт {airport.Name} успешно найден. Кол-во самолетов в нем: {airport.Count}!");
+                        airport = repository.ContainsAirport(name_airport);   
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex.Message);
                     }
+                    Console.WriteLine($"Аэропорт {airport.Name} успешно найден. Кол-во самолетов в нем: {airport.Count}!");
                 }
                 else if (choice == 7)
                 {
@@ -152,6 +160,19 @@ namespace CourseWork_Algorithms_Data_Structures
                         repository.SaveToJson();
                     else
                         repository.SaveToJson(file_path);
+                }
+                else if (choice == 10)
+                {
+                    try
+                    {
+                        repository.ClearMainStructure();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                    }
+                    Console.WriteLine("Структура успешно очищена!");
+
                 }
                 else if (choice == 0)
                     break;

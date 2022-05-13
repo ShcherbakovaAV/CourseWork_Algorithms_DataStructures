@@ -88,6 +88,11 @@ namespace CourseWork_Algorithms_Data_Structures
             return _mainStructure.Contains_Airplane(brand, year, out name_airport);
         }
 
+        public void ClearMainStructure()
+        {
+            _mainStructure.Clear();
+        }
+
         /// <summary>
         /// Сохранение структуры в xml
         /// </summary>
