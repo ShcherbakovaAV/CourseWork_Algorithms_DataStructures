@@ -35,7 +35,7 @@ namespace CourseWork_Algorithms_Data_Structures
         public Airplane Pop()
         {
             if (IsEmpty)
-                throw new InvalidOperationException();
+                throw new InvalidOperationException("Самолетов в аэропорту нет");
 
             Airplane result = _head.Airplane;
             _head = _head.Next;
@@ -68,6 +68,15 @@ namespace CourseWork_Algorithms_Data_Structures
 
         public void Clear()
         {
+            ElementSecondaryStructure _current = _head;
+
+            while (_current != null)
+            {
+                ElementSecondaryStructure temp = _current;
+                temp.Airplane = null;
+                temp = null;
+                _current = _current.Next;
+            }
             _head = null;
         }
 

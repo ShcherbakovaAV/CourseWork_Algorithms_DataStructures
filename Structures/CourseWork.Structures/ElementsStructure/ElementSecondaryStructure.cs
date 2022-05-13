@@ -2,7 +2,7 @@
 {
     public class ElementSecondaryStructure
     {
-        public Airplane Airplane { get; private set; }
+        public Airplane Airplane { get; set; }
 
         public ElementSecondaryStructure Next { get; set; }
 

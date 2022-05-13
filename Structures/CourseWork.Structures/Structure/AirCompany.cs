@@ -65,7 +65,7 @@ namespace CourseWork_Algorithms_Data_Structures
         public Airport PopAirport()
         {
             if (IsEmpty)
-                throw new InvalidOperationException();
+                throw new InvalidOperationException("В компании нет аэропортов");
 
             Airport result = _head.Airport;
 
@@ -85,7 +85,7 @@ namespace CourseWork_Algorithms_Data_Structures
         public Airplane PopAirplane(string name_airport)
         {
             if (IsEmpty)
-                throw new InvalidOperationException();
+                throw new InvalidOperationException("В компании нет аэропортов с самолетами");
 
             Airport airport = Contains_Airport(name_airport);
 
@@ -141,6 +141,17 @@ namespace CourseWork_Algorithms_Data_Structures
 
         public void Clear()
         {
+            ElementMainStructure _current = _head;
+
+            while (_current != null)
+            {
+                ElementMainStructure temp = _current;
+                temp.Airport.Clear();
+                temp.Airport = null;
+                temp = null;
+                _current = _current.Next;
+            }
+
             _head = null;
             _tail = null;  
         }
