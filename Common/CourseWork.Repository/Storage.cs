@@ -67,6 +67,9 @@ namespace CourseWork_Algorithms_Data_Structures
         
         public bool DeleteAirplane(string name_airport)
         {
+            if (name_airport is null)
+                throw new ArgumentNullException(nameof(name_airport));
+
             Airplane airplane = _mainStructure.PopAirplane(name_airport);
 
             if (airplane is null)
