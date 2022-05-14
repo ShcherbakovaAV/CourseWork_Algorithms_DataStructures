@@ -1,4 +1,6 @@
-﻿namespace CourseWork_Algorithms_Data_Structures
+﻿using CourseWork.Structures.Structure;
+
+namespace CourseWork.Structures.ElementsStructure
 {
     public class ElementSecondaryStructure
     {

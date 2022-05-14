@@ -1,4 +1,4 @@
-﻿namespace CourseWork_Algorithms_Data_Structures
+﻿namespace CourseWork.Structures.Structure
 {
     public class Airplane
     {

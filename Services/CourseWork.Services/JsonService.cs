@@ -1,6 +1,6 @@
 ﻿using CourseWork.Services.Interfaces;
 using CourseWork.Services.JsonModels;
-using CourseWork_Algorithms_Data_Structures;
+using CourseWork.Structures.Structure;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;

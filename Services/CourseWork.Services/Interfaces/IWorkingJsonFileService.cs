@@ -1,4 +1,4 @@
-﻿using CourseWork_Algorithms_Data_Structures;
+﻿using CourseWork.Structures.Structure;
 
 namespace CourseWork.Services.Interfaces
 {
