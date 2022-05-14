@@ -1,9 +1,10 @@
-﻿using CourseWork.Services.Interfaces;
-using CourseWork_Algorithms_Data_Structures.Services.Interfaces;
+﻿using CourseWork.Repository.Settings;
+using CourseWork.Services.Interfaces;
+using CourseWork.Structures.Structure;
 using Microsoft.Extensions.Configuration;
 using System;
 
-namespace CourseWork_Algorithms_Data_Structures
+namespace CourseWork.Repository
 {
     /// <summary>
     /// Класс, предназначенный для работы со структурой
@@ -35,7 +36,7 @@ namespace CourseWork_Algorithms_Data_Structures
             var section = configuration.GetSection("Configuration");
             _configuration = section.Get<Configuration>();
 
-            this.DownloadFromXml();
+            DownloadFromXml();
         }
 
         public void AddAirport(string name_airport)
@@ -48,7 +49,7 @@ namespace CourseWork_Algorithms_Data_Structures
 
         public void AddAirplane(string brand, int year, string name_airport)
         {
-            if (brand is null || (year < 1970 &&  year > 2022) || name_airport is null)
+            if (brand is null || year < 1970 && year > 2022 || name_airport is null)
                 throw new ArgumentNullException();
 
             _mainStructure.PushAirplane(brand, year, name_airport);
@@ -62,7 +63,7 @@ namespace CourseWork_Algorithms_Data_Structures
             else
                 return true;
         }
-        
+
         public bool DeleteAirplane(string name_airport)
         {
             if (name_airport is null)

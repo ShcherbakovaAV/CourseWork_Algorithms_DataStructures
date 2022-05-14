@@ -1,8 +1,9 @@
-﻿using System;
+﻿using CourseWork.Structures.ElementsStructure;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CourseWork_Algorithms_Data_Structures
+namespace CourseWork.Structures.Structure
 {
     public class AirCompany : IEnumerable<Airport>
     {
@@ -91,7 +92,7 @@ namespace CourseWork_Algorithms_Data_Structures
 
             if (airport is null)
                 throw new ArgumentException("Такого аэропорта нет");
-            
+
             return airport.Pop();
 
         }

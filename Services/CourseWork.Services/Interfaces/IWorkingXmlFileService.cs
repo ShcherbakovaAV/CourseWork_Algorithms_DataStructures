@@ -1,4 +1,6 @@
-﻿namespace CourseWork_Algorithms_Data_Structures.Services.Interfaces
+﻿using CourseWork.Structures.Structure;
+
+namespace CourseWork.Services.Interfaces
 {
     /// <summary>
     /// Интерфейс для работы с файлами

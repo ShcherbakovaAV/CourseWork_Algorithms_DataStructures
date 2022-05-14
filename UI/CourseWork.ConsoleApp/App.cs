@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CourseWork.Repository;
+using CourseWork.Structures.Structure;
+using System;
 
 namespace CourseWork_Algorithms_Data_Structures
 {

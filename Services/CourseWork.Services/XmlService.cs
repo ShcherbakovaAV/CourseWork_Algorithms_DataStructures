@@ -1,9 +1,10 @@
-﻿using CourseWork_Algorithms_Data_Structures.Services.Interfaces;
+﻿using CourseWork.Services.Interfaces;
+using CourseWork.Structures.Structure;
 using System;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace CourseWork_Algorithms_Data_Structures.Services
+namespace CourseWork.Services
 {
     /// <summary>
     /// Сервис, для работы с XML-файлом

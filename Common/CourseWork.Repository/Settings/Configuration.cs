@@ -1,6 +1,4 @@
-﻿using CourseWork.Repository.Settings;
-
-namespace CourseWork_Algorithms_Data_Structures
+﻿namespace CourseWork.Repository.Settings
 {
     /// <summary>
     /// Класс, для рабоыт с настройками
