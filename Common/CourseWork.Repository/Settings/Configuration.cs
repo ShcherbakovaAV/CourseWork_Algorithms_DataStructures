@@ -1,6 +1,4 @@
 ﻿using CourseWork.Repository.Settings;
-using Microsoft.Extensions.Configuration;
-
 
 namespace CourseWork_Algorithms_Data_Structures
 {
