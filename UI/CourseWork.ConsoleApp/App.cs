@@ -35,6 +35,12 @@ namespace CourseWork_Algorithms_Data_Structures
                 {
                     AirCompany company = repository.GetMainStructure();
 
+                    if (company is null)
+                    {
+                        Console.WriteLine("Авиокомпания не создана!");
+                        continue;
+                    }
+
                     if (company.IsEmpty)
                     {
                         Console.WriteLine("Структура пустая!");
@@ -57,6 +63,11 @@ namespace CourseWork_Algorithms_Data_Structures
                 }
                 else if (choice == 2)
                 {
+                    if (repository.GetMainStructure() is null)
+                    {
+                        Console.WriteLine("Авиокомпания не создана!");
+                        continue;
+                    }
                     Console.Write("Введите название аэропорта: ");
                     string name_airport = Console.ReadLine();
                     try
@@ -71,6 +82,11 @@ namespace CourseWork_Algorithms_Data_Structures
                 }
                 else if (choice == 3)
                 {
+                    if (repository.GetMainStructure() is null)
+                    {
+                        Console.WriteLine("Авиокомпания не создана!");
+                        continue;
+                    }
                     Console.Write("Введите бренд самолета: ");
                     string brand_airplane = Console.ReadLine();
                     Console.Write("Введите год производства самолета: ");
@@ -89,6 +105,11 @@ namespace CourseWork_Algorithms_Data_Structures
                 }
                 else if (choice == 4)
                 {
+                    if (repository.GetMainStructure() is null)
+                    {
+                        Console.WriteLine("Авиокомпания не создана!");
+                        continue;
+                    }
                     try
                     {
                         repository.DeleteAirport();
@@ -101,6 +122,11 @@ namespace CourseWork_Algorithms_Data_Structures
                 }
                 else if (choice == 5)
                 {
+                    if (repository.GetMainStructure() is null)
+                    {
+                        Console.WriteLine("Авиокомпания не создана!");
+                        continue;
+                    }
                     Console.Write("Введите название аэропорта самолета: ");
                     string name_airport = Console.ReadLine();
                     try
@@ -115,6 +141,11 @@ namespace CourseWork_Algorithms_Data_Structures
                 }
                 else if (choice == 6)
                 {
+                    if (repository.GetMainStructure() is null)
+                    {
+                        Console.WriteLine("Авиокомпания не создана!");
+                        continue;
+                    }
                     Console.Write("Введите название аэропорта: ");
                     string name_airport = Console.ReadLine();
                     Airport airport = null;
@@ -133,6 +164,11 @@ namespace CourseWork_Algorithms_Data_Structures
                 }
                 else if (choice == 7)
                 {
+                    if (repository.GetMainStructure() is null)
+                    {
+                        Console.WriteLine("Авиокомпания не создана!");
+                        continue;
+                    }
                     Console.Write("Введите бренд самолета: ");
                     string brand_airplane = Console.ReadLine();
                     Console.Write("Введите год производства самолета: ");
@@ -153,6 +189,11 @@ namespace CourseWork_Algorithms_Data_Structures
                 }
                 else if (choice == 8)
                 {
+                    if (repository.GetMainStructure() is null)
+                    {
+                        Console.WriteLine("Авиокомпания не создана!");
+                        continue;
+                    }
                     Console.Write("Введите название xml файла(Enter - путь к файлу по умолчанию): ");
                     string file_path = Console.ReadLine();
                     if (string.IsNullOrEmpty(file_path))
@@ -172,6 +213,11 @@ namespace CourseWork_Algorithms_Data_Structures
                 }
                 else if (choice == 9)
                 {
+                    if (repository.GetMainStructure() is null)
+                    {
+                        Console.WriteLine("Авиокомпания не создана!");
+                        continue;
+                    }
                     Console.Write("Введите название json файла(Enter - путь к файлу по умолчанию): ");
                     string file_path = Console.ReadLine();
                     if (string.IsNullOrEmpty(file_path))
@@ -201,9 +247,9 @@ namespace CourseWork_Algorithms_Data_Structures
                         {
                             repository.DownloadFromXml(file_path);
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
-                            Console.WriteLine(ex);
+                            Console.WriteLine("Указанного файла не существует");
                         }
                     }
                         
@@ -220,14 +266,19 @@ namespace CourseWork_Algorithms_Data_Structures
                         {
                             repository.DownloadFromJson(file_path);
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
-                            Console.WriteLine(ex);
+                            Console.WriteLine("Указанного файла не существует");
                         }
                     }
                 }
                 else if (choice == 12)
                 {
+                    if (repository.GetMainStructure() is null)
+                    {
+                        Console.WriteLine("Авиокомпания не создана!");
+                        continue;
+                    }
                     try
                     {
                         repository.ClearMainStructure();
