@@ -26,6 +26,7 @@ namespace CourseWork.ConsoleApp
 
             //Запуск приложения
             App.Run(storage);
+
         }
     }
 }
