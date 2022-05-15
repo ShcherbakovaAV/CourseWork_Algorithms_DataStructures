@@ -35,8 +35,11 @@ namespace CourseWork.Repository
 
             var section = configuration.GetSection("Configuration");
             _configuration = section.Get<Configuration>();
+        }
 
-            DownloadFromXml();
+        public void CreateAircompany(string name_aircompany)
+        {
+            _mainStructure = new AirCompany(name_aircompany);
         }
 
         public void AddAirport(string name_airport)
@@ -110,7 +113,7 @@ namespace CourseWork.Repository
         /// </summary>
         /// <param name="file_path"></param>
         /// <returns></returns>
-        private void DownloadFromXml(string file_path = null)
+        public void DownloadFromXml(string file_path = null)
         {
             if (file_path is null)
                 _mainStructure = _xmlService.Download(_configuration.Xml.FileInput);
@@ -129,7 +132,7 @@ namespace CourseWork.Repository
                 _jsonService.Save(_mainStructure, file_path);
         }
 
-        private void DownloadFromJson(string file_path = null)
+        public void DownloadFromJson(string file_path = null)
         {
             if (file_path is null)
                 _mainStructure = _jsonService.Download(_configuration.Json.FileOutput);

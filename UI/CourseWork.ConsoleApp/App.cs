@@ -13,16 +13,19 @@ namespace CourseWork_Algorithms_Data_Structures
             {
                 Console.WriteLine("Выбирите действия:");
                 Console.WriteLine("0 - Выход из программы");
-                Console.WriteLine("1 - Просмот структуры");
+                Console.WriteLine("1 - Просмот структуры авиокомпании");
                 Console.WriteLine("2 - Добавление аэропорта");
                 Console.WriteLine("3 - Добавление самолета в аэропорт");
                 Console.WriteLine("4 - Удаление аэропорта");
                 Console.WriteLine("5 - Удаление самолета");
                 Console.WriteLine("6 - Поиск аэропорта");
                 Console.WriteLine("7 - Поиск самолета");
-                Console.WriteLine("8 - Сохранение в XML файл");
-                Console.WriteLine("9 - Сохранение в JSON-файл");
-                Console.WriteLine("10 - Очистить структуру");
+                Console.WriteLine("8 - Сохранение структуру авиокомпании в XML файл");
+                Console.WriteLine("9 - Сохранение структуру авиокомпании в JSON-файл");
+                Console.WriteLine("10 - Загрузка структуру авиокомпании из XML файла");
+                Console.WriteLine("11 - Загрузка структуру авиокомпании из JSON файла");
+                Console.WriteLine("12 - Очистить структуру");
+                Console.WriteLine("13 - Создать авиокомпанию");
 
                 Console.Write("Выбор: ");
                 int choice = int.Parse(Console.ReadLine());
@@ -38,14 +41,15 @@ namespace CourseWork_Algorithms_Data_Structures
                         continue;
                     }
 
+                    Console.WriteLine($"Аэрокомпания: {company.Name}");
                     foreach (var airport in company)
                     {
-                        Console.WriteLine($"Аэропорт {airport.Name}: ");
+                        Console.WriteLine($" Аэропорт {airport.Name}: ");
                         int number = 1;
-                        Console.WriteLine($"  Самолеты:");
+                        Console.WriteLine($"   Самолеты:");
                         foreach (var airplane in airport)
                         {
-                            Console.WriteLine($"    №{number} Бренд:{airplane.Brand} - Год выпуска:{airplane.YearofManufacture} ");
+                            Console.WriteLine($"     №{number} Бренд:{airplane.Brand} - Год выпуска:{airplane.YearofManufacture} ");
                             number++;
                         }
                         Console.WriteLine();
@@ -122,7 +126,10 @@ namespace CourseWork_Algorithms_Data_Structures
                     {
                         Console.WriteLine(ex.Message);
                     }
-                    Console.WriteLine($"Аэропорт {airport.Name} успешно найден. Кол-во самолетов в нем: {airport.Count}!");
+                    if (airport is null)
+                        Console.WriteLine($"Аэропорт {name_airport} не найден");
+                    else
+                        Console.WriteLine($"Аэропорт {airport.Name} успешно найден. Кол-во самолетов в нем: {airport.Count}!");
                 }
                 else if (choice == 7)
                 {
@@ -134,7 +141,10 @@ namespace CourseWork_Algorithms_Data_Structures
                     {
                         var airplane = repository.ContainsAirplane(brand_airplane, year_airplane, out string name_airport);
 
-                        Console.WriteLine($"Самолет: {airplane.Brand}-{airplane.YearofManufacture} найден в аэропорту: {name_airport}");
+                        if (airplane is null)
+                            Console.WriteLine("Самолет не найден!");
+                        else
+                            Console.WriteLine($"Самолет: {airplane.Brand}-{airplane.YearofManufacture} найден в аэропорту: {name_airport}");
                     }
                     catch (Exception ex)
                     {
@@ -143,23 +153,80 @@ namespace CourseWork_Algorithms_Data_Structures
                 }
                 else if (choice == 8)
                 {
-                    Console.Write("Введите название xml файла: ");
+                    Console.Write("Введите название xml файла(Enter - путь к файлу по умолчанию): ");
                     string file_path = Console.ReadLine();
                     if (string.IsNullOrEmpty(file_path))
                         repository.SaveToXml();
                     else
-                        repository.SaveToXml(file_path);
+                    {
+                        try
+                        {
+                            repository.SaveToXml(file_path);
+                        }
+                        catch (Exception ex) 
+                        {
+                            Console.WriteLine(ex);
+                        }
+                    }
+                        
                 }
                 else if (choice == 9)
                 {
-                    Console.Write("Введите название json файла: ");
+                    Console.Write("Введите название json файла(Enter - путь к файлу по умолчанию): ");
                     string file_path = Console.ReadLine();
                     if (string.IsNullOrEmpty(file_path))
                         repository.SaveToJson();
                     else
-                        repository.SaveToJson(file_path);
+                    {
+                        try
+                        {
+                            repository.SaveToJson(file_path);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex);
+                        }
+                    }
+                        
                 }
                 else if (choice == 10)
+                {
+                    Console.Write("Введите название xml-файла(Enter - путь к файлу по умолчанию): ");
+                    string file_path = Console.ReadLine();
+                    if (string.IsNullOrEmpty(file_path))
+                        repository.DownloadFromXml();
+                    else
+                    {
+                        try
+                        {
+                            repository.DownloadFromXml(file_path);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex);
+                        }
+                    }
+                        
+                }
+                else if (choice == 11)
+                {
+                    Console.Write("Введите название json-файла(Enter - путь к файлу по умолчанию): ");
+                    string file_path = Console.ReadLine();
+                    if (string.IsNullOrEmpty(file_path))
+                        repository.DownloadFromJson();
+                    else
+                    {
+                        try
+                        {
+                            repository.DownloadFromJson(file_path);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex);
+                        }
+                    }
+                }
+                else if (choice == 12)
                 {
                     try
                     {
@@ -170,7 +237,13 @@ namespace CourseWork_Algorithms_Data_Structures
                         Console.WriteLine(ex);
                     }
                     Console.WriteLine("Структура успешно очищена!");
-
+                }
+                else if (choice == 13)
+                {
+                    Console.Write("Введите название аэрокомпании: ");
+                    string name_aircompany = Console.ReadLine();
+                    repository.CreateAircompany(name_aircompany);
+                    Console.WriteLine("Аэрокомпания успешно создана!");
                 }
                 else if (choice == 0)
                     break;

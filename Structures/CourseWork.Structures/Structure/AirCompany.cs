@@ -156,6 +156,7 @@ namespace CourseWork.Structures.Structure
             _head = null;
             _tail = null;
             Count = 0;
+            Name = "";
         }
 
         public IEnumerator<Airport> GetEnumerator()
