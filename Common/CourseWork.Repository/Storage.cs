@@ -24,6 +24,8 @@ namespace CourseWork.Repository
         /// <returns></returns>
         public AirCompany GetMainStructure() => _mainStructure;
 
+        public bool IsExistMainStructure => _mainStructure != null;
+
         public Storage(IWorkingXmlFileService xmlService, IWorkingJsonFileService jsonService)
         {
             _xmlService = xmlService;

@@ -32,14 +32,14 @@ namespace CourseWork_Algorithms_Data_Structures
                 Console.WriteLine();
 
                 if (choice == 1)
-                {
-                    AirCompany company = repository.GetMainStructure();
-
-                    if (company is null)
+                { 
+                    if (!repository.IsExistMainStructure)
                     {
                         Console.WriteLine("Авиокомпания не создана!");
                         continue;
                     }
+
+                    AirCompany company = repository.GetMainStructure();
 
                     if (company.IsEmpty)
                     {
@@ -63,7 +63,7 @@ namespace CourseWork_Algorithms_Data_Structures
                 }
                 else if (choice == 2)
                 {
-                    if (repository.GetMainStructure() is null)
+                    if (!repository.IsExistMainStructure)
                     {
                         Console.WriteLine("Авиокомпания не создана!");
                         continue;
@@ -82,7 +82,7 @@ namespace CourseWork_Algorithms_Data_Structures
                 }
                 else if (choice == 3)
                 {
-                    if (repository.GetMainStructure() is null)
+                    if (!repository.IsExistMainStructure)
                     {
                         Console.WriteLine("Авиокомпания не создана!");
                         continue;
@@ -105,7 +105,7 @@ namespace CourseWork_Algorithms_Data_Structures
                 }
                 else if (choice == 4)
                 {
-                    if (repository.GetMainStructure() is null)
+                    if (!repository.IsExistMainStructure)
                     {
                         Console.WriteLine("Авиокомпания не создана!");
                         continue;
@@ -122,7 +122,7 @@ namespace CourseWork_Algorithms_Data_Structures
                 }
                 else if (choice == 5)
                 {
-                    if (repository.GetMainStructure() is null)
+                    if (!repository.IsExistMainStructure)
                     {
                         Console.WriteLine("Авиокомпания не создана!");
                         continue;
@@ -141,7 +141,7 @@ namespace CourseWork_Algorithms_Data_Structures
                 }
                 else if (choice == 6)
                 {
-                    if (repository.GetMainStructure() is null)
+                    if (!repository.IsExistMainStructure)
                     {
                         Console.WriteLine("Авиокомпания не создана!");
                         continue;
@@ -164,7 +164,7 @@ namespace CourseWork_Algorithms_Data_Structures
                 }
                 else if (choice == 7)
                 {
-                    if (repository.GetMainStructure() is null)
+                    if (!repository.IsExistMainStructure)
                     {
                         Console.WriteLine("Авиокомпания не создана!");
                         continue;
@@ -189,7 +189,7 @@ namespace CourseWork_Algorithms_Data_Structures
                 }
                 else if (choice == 8)
                 {
-                    if (repository.GetMainStructure() is null)
+                    if (!repository.IsExistMainStructure)
                     {
                         Console.WriteLine("Авиокомпания не создана!");
                         continue;
@@ -213,7 +213,7 @@ namespace CourseWork_Algorithms_Data_Structures
                 }
                 else if (choice == 9)
                 {
-                    if (repository.GetMainStructure() is null)
+                    if (!!repository.IsExistMainStructure)
                     {
                         Console.WriteLine("Авиокомпания не создана!");
                         continue;
@@ -274,7 +274,7 @@ namespace CourseWork_Algorithms_Data_Structures
                 }
                 else if (choice == 12)
                 {
-                    if (repository.GetMainStructure() is null)
+                    if (!!repository.IsExistMainStructure)
                     {
                         Console.WriteLine("Авиокомпания не создана!");
                         continue;
