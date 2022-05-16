@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CourseWork.Structures.Structure
 {
@@ -18,15 +19,17 @@ namespace CourseWork.Structures.Structure
             Name = name;
         }
 
-        public int Count { get; private set; }
+        public int CountAirport { get; private set; }
 
-        public bool IsEmpty => Count == 0;
+        public int CountAirplane => this.Sum(airport => airport.Count);
+
+        public bool IsEmpty => CountAirport == 0;
 
         public void PushAirport(Airport airport)
         {
             ElementMainStructure node = new ElementMainStructure(airport);
 
-            if (Count == 0)
+            if (CountAirport == 0)
             {
                 _head = node;
                 _tail = node;
@@ -37,7 +40,7 @@ namespace CourseWork.Structures.Structure
                 _tail = node;
             }
 
-            Count++;
+            CountAirport++;
         }
 
         public void PushAirport(string name_airport)
@@ -70,7 +73,7 @@ namespace CourseWork.Structures.Structure
 
             Airport result = _head.Airport;
 
-            if (Count == 1)
+            if (CountAirport == 1)
             {
                 _head = null;
                 _tail = null;
@@ -78,7 +81,7 @@ namespace CourseWork.Structures.Structure
             else
                 _head = _head.Next;
 
-            Count--;
+            CountAirport--;
 
             return result;
         }
@@ -92,9 +95,7 @@ namespace CourseWork.Structures.Structure
 
             if (airport is null)
                 throw new ArgumentException("Такого аэропорта нет");
-
-            return airport.Pop();
-
+            return airport.Pop(); 
         }
 
         public Airport Contains_Airport(string name_airport)
@@ -155,7 +156,7 @@ namespace CourseWork.Structures.Structure
 
             _head = null;
             _tail = null;
-            Count = 0;
+            CountAirport = 0;
             Name = "";
         }
 

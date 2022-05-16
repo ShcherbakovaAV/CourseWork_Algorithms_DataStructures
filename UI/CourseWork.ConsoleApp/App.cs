@@ -13,7 +13,7 @@ namespace CourseWork_Algorithms_Data_Structures
             {
                 Console.WriteLine("Выбирите действия:");
                 Console.WriteLine("0 - Выход из программы");
-                Console.WriteLine("1 - Просмот структуры авиокомпании");
+                Console.WriteLine("1 - Создать авиокомпанию");
                 Console.WriteLine("2 - Добавление аэропорта");
                 Console.WriteLine("3 - Добавление самолета в аэропорт");
                 Console.WriteLine("4 - Удаление аэропорта");
@@ -25,41 +25,18 @@ namespace CourseWork_Algorithms_Data_Structures
                 Console.WriteLine("10 - Загрузка структуру авиокомпании из XML файла");
                 Console.WriteLine("11 - Загрузка структуру авиокомпании из JSON файла");
                 Console.WriteLine("12 - Очистить структуру");
-                Console.WriteLine("13 - Создать авиокомпанию");
+                Console.WriteLine("13 - Просмот структуры авиокомпании");
 
                 Console.Write("Выбор: ");
                 int choice = int.Parse(Console.ReadLine());
                 Console.WriteLine();
 
                 if (choice == 1)
-                { 
-                    if (!repository.IsExistMainStructure)
-                    {
-                        Console.WriteLine("Авиокомпания не создана!");
-                        continue;
-                    }
-
-                    AirCompany company = repository.GetMainStructure();
-
-                    if (company.IsEmpty)
-                    {
-                        Console.WriteLine("Структура пустая!");
-                        continue;
-                    }
-
-                    Console.WriteLine($"Аэрокомпания: {company.Name}");
-                    foreach (var airport in company)
-                    {
-                        Console.WriteLine($" Аэропорт {airport.Name}: ");
-                        int number = 1;
-                        Console.WriteLine($"   Самолеты:");
-                        foreach (var airplane in airport)
-                        {
-                            Console.WriteLine($"     №{number} Бренд:{airplane.Brand} - Год выпуска:{airplane.YearofManufacture} ");
-                            number++;
-                        }
-                        Console.WriteLine();
-                    }
+                {
+                    Console.Write("Введите название аэрокомпании: ");
+                    string name_aircompany = Console.ReadLine();
+                    repository.CreateAircompany(name_aircompany);
+                    Console.WriteLine("Аэрокомпания успешно создана!");
                 }
                 else if (choice == 2)
                 {
@@ -291,10 +268,33 @@ namespace CourseWork_Algorithms_Data_Structures
                 }
                 else if (choice == 13)
                 {
-                    Console.Write("Введите название аэрокомпании: ");
-                    string name_aircompany = Console.ReadLine();
-                    repository.CreateAircompany(name_aircompany);
-                    Console.WriteLine("Аэрокомпания успешно создана!");
+                    if (!repository.IsExistMainStructure)
+                    {
+                        Console.WriteLine("Авиокомпания не создана!");
+                        continue;
+                    }
+
+                    AirCompany company = repository.GetMainStructure();
+
+                    if (company.IsEmpty)
+                    {
+                        Console.WriteLine("Структура пустая!");
+                        continue;
+                    }
+
+                    Console.WriteLine($"Аэрокомпания: {company.Name}. Всего аэропортов: {company.CountAirport}. Всего самолетов: {company.CountAirplane}");
+                    foreach (var airport in company)
+                    {
+                        Console.WriteLine($" Аэропорт {airport.Name}. Кол-во самолетов: {airport.Count}: ");
+                        int number = 1;
+                        Console.WriteLine($"   Самолеты:");
+                        foreach (var airplane in airport)
+                        {
+                            Console.WriteLine($"     №{number} Бренд:{airplane.Brand} - Год выпуска:{airplane.YearofManufacture} ");
+                            number++;
+                        }
+                        Console.WriteLine();
+                    }
                 }
                 else if (choice == 0)
                     break;
