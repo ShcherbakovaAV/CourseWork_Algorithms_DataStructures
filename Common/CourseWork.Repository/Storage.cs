@@ -49,6 +49,11 @@ namespace CourseWork.Repository
             if (name_airport is null)
                 throw new ArgumentNullException(nameof(name_airport));
 
+            var airport = _mainStructure.Contains_Airport(name_airport);
+
+            if (airport != null)
+                throw new ArgumentException("Такой аэропорт уже существует");
+
             _mainStructure.PushAirport(name_airport);
         }
 

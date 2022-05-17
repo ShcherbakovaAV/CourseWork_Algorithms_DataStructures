@@ -1,7 +1,6 @@
 ﻿using CourseWork.Repository;
 using CourseWork.Services;
 using CourseWork.Services.Interfaces;
-using CourseWork_Algorithms_Data_Structures;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CourseWork.ConsoleApp

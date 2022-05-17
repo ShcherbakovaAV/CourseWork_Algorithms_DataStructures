@@ -4,9 +4,20 @@ namespace CourseWork.Structures.ElementsStructure
 {
     public class ElementMainStructure
     {
-        public ElementMainStructure Next { get; set; }
+        private ElementMainStructure _next;
+        public ElementMainStructure Next 
+        {
+            get { return _next; }
+            set { _next = value; }
+        }
 
-        public Airport Airport { get; set; }
+        private Airport _airport;
+        public Airport Airport 
+        {
+            get { return _airport; }
+            set { _airport = value; }
+        }
+
 
         public ElementMainStructure(Airport airport)
         {

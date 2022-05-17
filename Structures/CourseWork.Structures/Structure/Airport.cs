@@ -7,17 +7,27 @@ namespace CourseWork.Structures.Structure
 {
     public class Airport : IEnumerable<Airplane>
     {
-        public string Name { get; private set; }
+        private string _name;
+        public string Name => _name;
 
         private ElementSecondaryStructure _head;
 
-        public int Count { get; private set; }
+        private int _count;
+        public int Count
+        {
+            get { return _count; }
+            set { _count = value; }
+        }
 
-        public bool IsEmpty => Count == 0;
+        private bool _isEmpty => Count == 0;
+        public bool IsEmpty
+        {
+            get { return _isEmpty; }
+        }
 
         public Airport(string name)
         {
-            Name = name;
+            _name = name;
         }
 
         public void Push(Airplane airplane)

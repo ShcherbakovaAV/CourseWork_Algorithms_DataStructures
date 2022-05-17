@@ -8,7 +8,12 @@ namespace CourseWork.Structures.Structure
 {
     public class AirCompany : IEnumerable<Airport>
     {
-        public string Name { get; set; }
+        private string _name;
+        public string Name
+        {
+            get { return _name; }
+            set { _name = value; }
+        }
 
         private ElementMainStructure _head { get; set; }
 
@@ -19,11 +24,24 @@ namespace CourseWork.Structures.Structure
             Name = name;
         }
 
-        public int CountAirport { get; private set; }
+        private int _countAirport;
+        public int CountAirport
+        {
+            get { return _countAirport; }
+            set { _countAirport = value; }
+        }
 
-        public int CountAirplane => this.Sum(airport => airport.Count);
+        private int _countAirplane => this.Sum(airport => airport.Count);
+        public int CountAirplane
+        {
+            get { return _countAirplane; }
+        }
 
-        public bool IsEmpty => CountAirport == 0;
+        private bool _isEmpty => CountAirport == 0;
+        public bool IsEmpty
+        {
+            get { return _isEmpty; }
+        } 
 
         public void PushAirport(Airport airport)
         {

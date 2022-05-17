@@ -2,7 +2,7 @@
 using CourseWork.Structures.Structure;
 using System;
 
-namespace CourseWork_Algorithms_Data_Structures
+namespace CourseWork.ConsoleApp
 {
     public class App
     {
@@ -128,7 +128,7 @@ namespace CourseWork_Algorithms_Data_Structures
                     Airport airport = null;
                     try
                     {
-                        airport = repository.ContainsAirport(name_airport);   
+                        airport = repository.ContainsAirport(name_airport);
                     }
                     catch (Exception ex)
                     {
@@ -181,12 +181,12 @@ namespace CourseWork_Algorithms_Data_Structures
                         {
                             repository.SaveToXml(file_path);
                         }
-                        catch (Exception ex) 
+                        catch (Exception ex)
                         {
                             Console.WriteLine(ex);
                         }
                     }
-                        
+
                 }
                 else if (choice == 9)
                 {
@@ -210,7 +210,7 @@ namespace CourseWork_Algorithms_Data_Structures
                             Console.WriteLine(ex);
                         }
                     }
-                        
+
                 }
                 else if (choice == 10)
                 {
@@ -229,7 +229,7 @@ namespace CourseWork_Algorithms_Data_Structures
                             Console.WriteLine("Указанного файла не существует");
                         }
                     }
-                        
+
                 }
                 else if (choice == 11)
                 {

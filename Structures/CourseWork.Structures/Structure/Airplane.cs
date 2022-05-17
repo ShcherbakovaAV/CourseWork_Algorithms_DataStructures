@@ -2,9 +2,19 @@
 {
     public class Airplane
     {
-        public string Brand { get; set; }
+        private string _brand;
+        public string Brand
+        {
+            get { return _brand; }
+            set { _brand = value; }
+        }
 
-        public int YearofManufacture { get; set; }
+        private int _yearOfManufacture;
+        public int YearofManufacture
+        {
+            get { return _yearOfManufacture; }
+            set { _yearOfManufacture = value; }
+        }
 
         public Airplane(string Brand, int YearofManufacture)
         {
