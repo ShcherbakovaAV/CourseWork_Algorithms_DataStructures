@@ -83,6 +83,7 @@ namespace CourseWork.Structures.Structure
             {
                 ElementSecondaryStructure temp = _current;
                 _current = _current.Next;
+                temp.Airplane.Clear();
                 temp.Airplane = null;
                 temp = null;
             }

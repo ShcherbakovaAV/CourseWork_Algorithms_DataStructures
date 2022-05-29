@@ -25,7 +25,7 @@ namespace CourseWork.ConsoleApp
                 Console.WriteLine("10 - Загрузка структуру авиокомпании из XML файла");
                 Console.WriteLine("11 - Загрузка структуру авиокомпании из JSON файла");
                 Console.WriteLine("12 - Очистить структуру");
-                Console.WriteLine("13 - Просмот структуры авиокомпании");
+                Console.WriteLine("13 - Просмотр структуры авиокомпании");
 
                 Console.Write("Выбор: ");
                 int choice = int.Parse(Console.ReadLine());
@@ -109,7 +109,7 @@ namespace CourseWork.ConsoleApp
                     try
                     {
                         repository.DeleteAirplane(name_airport);
-                        Console.WriteLine("Аэропорт успешно удален!");
+                        Console.WriteLine($"Самолет в {name_airport} успешно удален!");
                     }
                     catch (Exception ex)
                     {
@@ -186,11 +186,11 @@ namespace CourseWork.ConsoleApp
                             Console.WriteLine(ex);
                         }
                     }
-
+                    Console.WriteLine("Сохранение произведено успешно!");
                 }
                 else if (choice == 9)
                 {
-                    if (!!repository.IsExistMainStructure)
+                    if (!repository.IsExistMainStructure)
                     {
                         Console.WriteLine("Авиокомпания не создана!");
                         continue;
@@ -210,7 +210,7 @@ namespace CourseWork.ConsoleApp
                             Console.WriteLine(ex);
                         }
                     }
-
+                    Console.WriteLine("Сохранение произведено успешно!");
                 }
                 else if (choice == 10)
                 {
@@ -229,7 +229,7 @@ namespace CourseWork.ConsoleApp
                             Console.WriteLine("Указанного файла не существует");
                         }
                     }
-
+                    Console.WriteLine("Загрузка произведена успешно!");
                 }
                 else if (choice == 11)
                 {
@@ -248,10 +248,11 @@ namespace CourseWork.ConsoleApp
                             Console.WriteLine("Указанного файла не существует");
                         }
                     }
+                    Console.WriteLine("Загрузка произведена успешно!");
                 }
                 else if (choice == 12)
                 {
-                    if (!!repository.IsExistMainStructure)
+                    if (!repository.IsExistMainStructure)
                     {
                         Console.WriteLine("Авиокомпания не создана!");
                         continue;

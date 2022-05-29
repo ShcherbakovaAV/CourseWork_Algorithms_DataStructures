@@ -68,6 +68,7 @@ namespace CourseWork.Repository
         public bool DeleteAirport()
         {
             Airport airport = _mainStructure.PopAirport();
+            airport.Clear();
             if (airport is null)
                 return false;
             else

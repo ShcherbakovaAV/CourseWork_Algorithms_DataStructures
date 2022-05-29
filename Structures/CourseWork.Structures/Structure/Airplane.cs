@@ -21,5 +21,11 @@
             this.Brand = Brand;
             this.YearofManufacture = YearofManufacture;
         }
+
+        public void Clear()
+        {
+            this._brand = null;
+            this._yearOfManufacture = 0;
+        }
     }
 }
