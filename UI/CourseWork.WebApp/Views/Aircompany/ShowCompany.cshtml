@@ -1,0 +1,58 @@
+﻿@model CourseWork.WebApp.Models.AircompanyViewModel
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>Информация о аэрокомпании</h1>
+
+<p style="font-size: 40px">Имя: @Model.Name</p>
+
+<p style="font-size: 40px">Колличество аэропортов: @Model.CountAirpotrs</p>
+
+<p style="font-size: 40px">Количество самолетов: @Model.CountAirpanes</p>
+
+<p style="font-size: 40px">Аэропорты:</p>
+
+@{
+    int count = 1;
+}
+@foreach (var airport in Model.Airports)
+{
+    <p style="font-size: 30px">№: @(count++)</p>
+    <p style="font-size: 30px">Название: @airport.Name</p>
+    <p style="font-size: 30px">Колличество самолетов: @airport.CountAirplane</p>
+    <p style="font-size: 30px">Самолеты: </p>
+    @if (airport.Airplanes.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Id</th>
+                    <th>Бренд</th>
+                    <th>Год производства</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int i = 1;
+                }
+                @foreach(var airplane in airport.Airplanes)
+                {
+                    <tr>
+                        <td></td>
+                        <td>@(i++)</td>
+                        <td>@airplane.Brand</td>
+                        <td>@airplane.YearofManufacture</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Самолетов в аэропорту нет!</p>
+    }
+    
+}
