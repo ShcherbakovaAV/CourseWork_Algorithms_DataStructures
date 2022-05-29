@@ -8,6 +8,6 @@ namespace CourseWork.WebApp.Models
 
         public int CountAirplane { get; set; }
 
-        public Stack<AirplaneViewModel> Airplanes { get; set; }
+        public Stack<AirplaneViewModel> Airplanes { get; set; } = new Stack<AirplaneViewModel>();
     }
 }

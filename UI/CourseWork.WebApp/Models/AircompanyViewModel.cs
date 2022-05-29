@@ -10,6 +10,6 @@ namespace CourseWork.WebApp.Models
 
         public int CountAirpanes { get; set; }
 
-        public Queue<AirportViewModel> Airports { get; set; }
+        public Queue<AirportViewModel> Airports { get; set; } = new Queue<AirportViewModel>();
     }
 }
