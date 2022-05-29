@@ -33,6 +33,6 @@ namespace CourseWork.Services.Interfaces
 
         void SaveToJson(string file_path = null);
 
-        void DownloadFromJson(string file_path = null)
+        void DownloadFromJson(string file_path = null);
     }
 }
