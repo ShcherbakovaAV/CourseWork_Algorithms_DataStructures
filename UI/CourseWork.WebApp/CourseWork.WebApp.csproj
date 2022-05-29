@@ -4,4 +4,9 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\CourseWork.Repository\CourseWork.Repository.csproj" />
+    <ProjectReference Include="..\..\Services\CourseWork.Services\CourseWork.Services.csproj" />
+  </ItemGroup>
+
 </Project>
