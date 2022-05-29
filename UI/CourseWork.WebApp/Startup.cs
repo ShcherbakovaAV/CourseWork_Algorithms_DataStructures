@@ -1,4 +1,5 @@
 using CourseWork.Repository;
+using CourseWork.Services;
 using CourseWork.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -24,7 +25,9 @@ namespace CourseWork.WebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddTransient<IStorage, Storage>();
+            services.AddSingleton<IWorkingXmlFileService, XmlService>();
+            services.AddSingleton<IWorkingJsonFileService, JsonService>();
+            services.AddSingleton<IStorage, Storage>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
