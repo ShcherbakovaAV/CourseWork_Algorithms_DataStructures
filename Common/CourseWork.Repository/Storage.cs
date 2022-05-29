@@ -9,7 +9,7 @@ namespace CourseWork.Repository
     /// <summary>
     /// Класс, предназначенный для работы со структурой
     /// </summary>
-    public class Storage
+    public class Storage : IStorage
     {
         private Configuration _configuration;
 
