@@ -22,6 +22,7 @@
     <p style="font-size: 30px">№: @(count++)</p>
     <p style="font-size: 30px">Название: @airport.Name</p>
     <p style="font-size: 30px">Колличество самолетов: @airport.CountAirplane</p>
+    <p style="font-size: 30px"><a asp-controller="Aircompany" asp-action="CreateAirplane" asp-route-name_airport="@airport.Name">Добавить самолет</a></p>
     <p style="font-size: 30px">Самолеты: </p>
     @if (airport.Airplanes.Any())
     {

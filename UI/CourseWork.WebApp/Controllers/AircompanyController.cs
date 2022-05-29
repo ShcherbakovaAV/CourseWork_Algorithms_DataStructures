@@ -45,5 +45,18 @@ namespace CourseWork.WebApp.Controllers
             var aircompany_view = _storage.GetMainStructure().ToView();
             return View(aircompany_view);
         }
+
+        [HttpGet]
+        public IActionResult CreateAirplane(string name_airport)
+        {
+            return View(new CreateAirplaneViewModel { AirportName = name_airport }); 
+        }
+
+        [HttpPost]
+        public IActionResult CreateAirplane(CreateAirplaneViewModel Model)
+        {
+            _storage.AddAirplane(Model.Brand, Model.YearofManufacture, Model.AirportName);
+            return RedirectToAction(nameof(ShowCompany));
+        }
     }
 }
