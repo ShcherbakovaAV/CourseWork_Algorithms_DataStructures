@@ -4,6 +4,8 @@
     ViewData["Title"] = "View";
 }
 
+<a asp-controller="Aircompany" asp-action="Index" class="btn btn-sm btn-info">Вернуться на главную</a>
+
 <h1>Информация о аэрокомпании</h1>
 
 <p style="font-size: 40px">Имя: @Model.Name</p>
@@ -12,23 +14,34 @@
 
 <p style="font-size: 40px">Количество самолетов: @Model.CountAirpanes</p>
 
-<p style="font-size: 40px">Аэропорты: <a asp-controller="Aircompany" asp-action="CreateAirport">Добавить аэропорт</a></p>
+<p style="font-size: 40px">Аэропорты: <a asp-controller="Aircompany" asp-action="CreateAirport" class="btn btn-sm btn-success">Добавить аэропорт</a></p>
+
+<form asp-action="DeleteAirport">
+    <input type="submit" value="Удалить" class="btn btn-sm btn-danger" />
+</form>
 
 @{
     int count = 1;
 }
-@foreach (var airport in Model.Airports)
+
+@if (Model.Airports.Count == 0)
 {
+    <p style="font-size: 30px">Аэропортов нет!</p>
+}
+else
+{
+    @foreach (var airport in Model.Airports)
+    {
     <p style="font-size: 30px">№: @(count++)</p>
     <p style="font-size: 30px">Название: @airport.Name</p>
     <p style="font-size: 30px">Колличество самолетов: @airport.CountAirplane</p>
-    <p style="font-size: 30px"><a asp-controller="Aircompany" asp-action="CreateAirplane" asp-route-name_airport="@airport.Name">Добавить самолет</a></p>
     <p style="font-size: 30px">Самолеты: </p>
-    @if (airport.Airplanes.Any())
-    {
+    <p style="font-size: 30px"><a asp-controller="Aircompany" asp-action="CreateAirplane" asp-route-name_airport="@airport.Name" class="btn btn-sm btn-success">Добавить самолет</a></p>
         <form asp-action="DeleteAirplane" asp-route-name_airport="@airport.Name">
             <input type="submit" value="Удалить" class="btn btn-sm btn-danger" />
         </form>
+    @if (airport.Airplanes.Any())
+    {
         <table class="table">
             <thead>
                 <tr>
@@ -63,3 +76,5 @@
     <br />
     
 }
+}
+
