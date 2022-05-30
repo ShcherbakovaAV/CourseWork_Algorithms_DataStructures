@@ -1,5 +1,6 @@
 ﻿using CourseWork.Structures.Structure;
 using CourseWork.WebApp.Models;
+using System.Collections.Generic;
 
 namespace CourseWork.WebApp.Mapping
 {
@@ -24,6 +25,7 @@ namespace CourseWork.WebApp.Mapping
                     Name = airport.Name,
                     CountAirplane = airport.Count
                 };
+                List<AirplaneViewModel> list = new List<AirplaneViewModel>();
                 foreach (var airplane in airport)
                 {
                     var airplane_view = new AirplaneViewModel
@@ -31,7 +33,12 @@ namespace CourseWork.WebApp.Mapping
                         Brand = airplane.Brand,
                         YearofManufacture = airplane.YearofManufacture,
                     };
-                    airport_view.Airplanes.Push(airplane_view);
+                    list.Add(airplane_view);
+                }
+                list.Reverse();
+                foreach (var e in list)
+                {
+                    airport_view.Airplanes.Push(e);
                 }
                 viewModel.Airports.Enqueue(airport_view);                
             }
