@@ -55,7 +55,26 @@ namespace CourseWork.WebApp.Controllers
         [HttpPost]
         public IActionResult CreateAirplane(CreateAirplaneViewModel Model)
         {
+            if (!ModelState.IsValid)
+                return NotFound();
+
             _storage.AddAirplane(Model.Brand, Model.YearofManufacture, Model.AirportName);
+            return RedirectToAction(nameof(ShowCompany));
+        }
+
+        [HttpGet]
+        public IActionResult CreateAirport()
+        {
+            return View(new CreateAirportViewModel());
+        }
+
+        [HttpPost]
+        public IActionResult CreateAirpoty(CreateAirportViewModel Model)
+        {
+            if (!ModelState.IsValid)
+                return NotFound();
+
+            _storage.AddAirport(Model.Name);
             return RedirectToAction(nameof(ShowCompany));
         }
     }
