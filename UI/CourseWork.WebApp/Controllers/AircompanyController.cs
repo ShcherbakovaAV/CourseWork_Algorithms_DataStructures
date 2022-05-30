@@ -31,8 +31,10 @@ namespace CourseWork.WebApp.Controllers
 
             if (Model.FileType == "json")
                 _storage.DownloadFromJson(Model.FileOutput);
-            else
+            else if (Model.FileType == "xml")
                 _storage.DownloadFromXml(Model.FileOutput);
+            else
+                _storage.CreateAircompany(Model.NameCompany);
 
             
 
@@ -87,5 +89,13 @@ namespace CourseWork.WebApp.Controllers
             _storage.DeleteAirplane(name_airport);
             return RedirectToAction(nameof(ShowCompany));
         }
+
+        [HttpPost]
+        public IActionResult DeleteAirport()
+        {
+            _storage.DeleteAirport();
+            return RedirectToAction(nameof(ShowCompany));
+        }
+
     }
 }

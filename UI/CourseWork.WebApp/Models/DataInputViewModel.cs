@@ -5,5 +5,7 @@
         public string? FileOutput { get; set; }
 
         public string? FileType { get; set; }
+
+        public string? NameCompany { get; set; }
     }
 }
