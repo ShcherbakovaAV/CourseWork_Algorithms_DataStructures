@@ -12,7 +12,7 @@
 
 <p style="font-size: 40px">Количество самолетов: @Model.CountAirpanes</p>
 
-<p style="font-size: 40px">Аэропорты:</p>
+<p style="font-size: 40px">Аэропорты: <a asp-controller="Aircompany" asp-action="CreateAirport">Добавить аэропорт</a></p>
 
 @{
     int count = 1;
@@ -50,10 +50,13 @@
                 }
             </tbody>
         </table>
+        
     }
     else
     {
         <p>Самолетов в аэропорту нет!</p>
     }
+    <br />
+    <br />
     
 }
