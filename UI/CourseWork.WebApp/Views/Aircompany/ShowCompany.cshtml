@@ -26,6 +26,9 @@
     <p style="font-size: 30px">Самолеты: </p>
     @if (airport.Airplanes.Any())
     {
+        <form asp-action="DeleteAirplane" asp-route-name_airport="@airport.Name">
+            <input type="submit" value="Удалить" class="btn btn-sm btn-danger" />
+        </form>
         <table class="table">
             <thead>
                 <tr>

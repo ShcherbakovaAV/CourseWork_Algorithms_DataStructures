@@ -69,12 +69,22 @@ namespace CourseWork.WebApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateAirpoty(CreateAirportViewModel Model)
+        public IActionResult CreateAirport(CreateAirportViewModel Model)
         {
             if (!ModelState.IsValid)
                 return NotFound();
 
             _storage.AddAirport(Model.Name);
+            return RedirectToAction(nameof(ShowCompany));
+        }
+
+        [HttpPost]
+        public IActionResult DeleteAirplane(string name_airport)
+        {
+            if (name_airport is null)
+                return NotFound();
+
+            _storage.DeleteAirplane(name_airport);
             return RedirectToAction(nameof(ShowCompany));
         }
     }
