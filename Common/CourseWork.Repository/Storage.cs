@@ -143,7 +143,7 @@ namespace CourseWork.Repository
         public void DownloadFromJson(string file_path = null)
         {
             if (file_path is null)
-                _mainStructure = _jsonService.Download(_configuration.Json.FileOutput);
+                _mainStructure = _jsonService.Download(_configuration.Json.FileInput);
             else
                 _mainStructure = _jsonService.Download(file_path);
 
