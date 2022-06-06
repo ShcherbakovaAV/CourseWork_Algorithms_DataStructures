@@ -5,9 +5,17 @@
     /// </summary>
     public class Configuration
     {
-        public ConfigurationXml Xml { get; set; }
-
-        public ConfigurationJson Json { get; set; }
-
+        private ConfigurationJson _json;
+        private ConfigurationXml _xml;
+        public ConfigurationXml Xml
+        {
+            get { return _xml; }
+            set { _xml = value; }
+        }
+        public ConfigurationJson Json
+        {
+            get { return _json; }
+            set { _json = value; }
+        }
     }
 }
