@@ -152,12 +152,12 @@ namespace CourseWork.Structures.Structure
             return null;
         }
 
-        public Airport Peek()
-        {
-            if (IsEmpty)
-                throw new InvalidOperationException("Очередь пуста");
-            return _head.Airport;
-        }
+        //public Airport Peek()
+        //{
+        //    if (IsEmpty)
+        //        throw new InvalidOperationException("Очередь пуста");
+        //    return _head.Airport;
+        //}
 
         public void Clear()
         {

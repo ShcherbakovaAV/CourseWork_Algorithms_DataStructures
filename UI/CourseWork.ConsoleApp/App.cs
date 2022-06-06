@@ -28,7 +28,7 @@ namespace CourseWork.ConsoleApp
                 Console.WriteLine("13 - Просмотр структуры авиокомпании");
 
                 Console.Write("Выбор: ");
-                int choice = int.Parse(Console.ReadLine());
+                int choice = InputInteger();
                 Console.WriteLine();
 
                 if (choice == 1)
@@ -67,7 +67,7 @@ namespace CourseWork.ConsoleApp
                     Console.Write("Введите бренд самолета: ");
                     string brand_airplane = Console.ReadLine();
                     Console.Write("Введите год производства самолета: ");
-                    int year_airplane = int.Parse(Console.ReadLine());
+                    int year_airplane = InputInteger();
                     Console.Write("Введите название аэропорта самолета: ");
                     string name_airport = Console.ReadLine();
                     try
@@ -149,7 +149,7 @@ namespace CourseWork.ConsoleApp
                     Console.Write("Введите бренд самолета: ");
                     string brand_airplane = Console.ReadLine();
                     Console.Write("Введите год производства самолета: ");
-                    int year_airplane = int.Parse(Console.ReadLine());
+                    int year_airplane = InputInteger();
                     try
                     {
                         var airplane = repository.ContainsAirplane(brand_airplane, year_airplane, out string name_airport);
@@ -180,13 +180,14 @@ namespace CourseWork.ConsoleApp
                         try
                         {
                             repository.SaveToXml(file_path);
+                            Console.WriteLine("Сохранение произведено успешно!");
                         }
                         catch (Exception ex)
                         {
                             Console.WriteLine(ex);
                         }
                     }
-                    Console.WriteLine("Сохранение произведено успешно!");
+                    
                 }
                 else if (choice == 9)
                 {
@@ -204,13 +205,14 @@ namespace CourseWork.ConsoleApp
                         try
                         {
                             repository.SaveToJson(file_path);
+                            Console.WriteLine("Сохранение произведено успешно!");
                         }
                         catch (Exception ex)
                         {
                             Console.WriteLine(ex);
                         }
                     }
-                    Console.WriteLine("Сохранение произведено успешно!");
+                    
                 }
                 else if (choice == 10)
                 {
@@ -223,13 +225,13 @@ namespace CourseWork.ConsoleApp
                         try
                         {
                             repository.DownloadFromXml(file_path);
+                            Console.WriteLine("Загрузка произведена успешно!");
                         }
                         catch (Exception)
                         {
                             Console.WriteLine("Указанного файла не существует");
                         }
                     }
-                    Console.WriteLine("Загрузка произведена успешно!");
                 }
                 else if (choice == 11)
                 {
@@ -242,13 +244,14 @@ namespace CourseWork.ConsoleApp
                         try
                         {
                             repository.DownloadFromJson(file_path);
+                            Console.WriteLine("Загрузка произведена успешно!");
                         }
                         catch (Exception)
                         {
                             Console.WriteLine("Указанного файла не существует");
                         }
                     }
-                    Console.WriteLine("Загрузка произведена успешно!");
+                    
                 }
                 else if (choice == 12)
                 {
@@ -303,5 +306,25 @@ namespace CourseWork.ConsoleApp
 
             Console.WriteLine("Программа завершила свою работу!");
         }
+        public static int InputInteger()
+        {
+            string input; bool stop = false;
+            int integer = -1;
+            while (!stop)
+            {
+                try
+                {
+                    input = Console.ReadLine();
+                    integer = int.Parse(input);
+                    stop = true;
+                }
+                catch (Exception)
+                {
+                    Console.Write("Введите целое число: ");
+                }
+            }
+            return integer;
+        }
+
     }
 }
